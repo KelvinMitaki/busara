@@ -83,3 +83,25 @@
   background-color: #fff;
   left: 17%;
 }
+.sub {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub p {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 2rem 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sub button {
+  width: 70%;
+  background-image: none;
+  background-color: #fff !important;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+}

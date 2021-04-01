@@ -57,12 +57,8 @@ const Register = () => {
         <button>create account</button>
       </div>
       <div className={styles.sub}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
-          numquam architecto suscipit libero, quod ipsam officiis, perspiciatis,
-          aut et voluptatibus iusto sunt dicta commodi nihil excepturi possimus!
-          Facilis, explicabo expedita.
-        </p>
+        <p>already have an account?</p>
+        <button>take me to login</button>
       </div>
     </form>
   );
