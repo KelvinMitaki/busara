@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  color: var(--primary-color);
 }
 .register {
   display: flex;
@@ -24,6 +25,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  color: #fff;
 }
 
 .input {
@@ -36,6 +38,10 @@
 .input input {
   border-top-left-radius: 0%;
   border-bottom-left-radius: 0%;
+  color: var(--primary-color);
+}
+.input input::placeholder {
+  color: var(--primary-color);
 }
 .input input:focus {
   outline: none;

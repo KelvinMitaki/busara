@@ -17,42 +17,42 @@ const Register = () => {
             <AiOutlineUser size={20} />
           </div>
           <span></span>
-          <input type="text" />
+          <input type="text" placeholder="Username" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <MdEmail size={20} />
           </div>
           <span></span>
-          <input type="text" />
+          <input type="text" placeholder="Email" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <RiLockFill size={20} />
           </div>
           <span></span>
-          <input type="text" />
+          <input type="text" placeholder="Password" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <RiLockFill size={20} />
           </div>
           <span></span>
-          <input type="text" />
+          <input type="text" placeholder="Confirm Password" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <MdPhoneAndroid size={20} />
           </div>
           <span></span>
-          <input type="text" />
+          <input type="text" placeholder="Phone Number" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <MdLocationOn size={20} />
           </div>
           <span></span>
-          <input type="text" />
+          <input type="text" placeholder="Location" />
         </div>
         <button>create account</button>
       </div>

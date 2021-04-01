@@ -33,3 +33,19 @@ input {
   height: 4rem;
   border-radius: 4rem;
 }
+
+button {
+  border: none;
+  padding: 1rem;
+  border-radius: 5rem;
+  height: 4rem;
+  background-color: var(--primary-color);
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 250, 255),
+    rgb(0, 110, 255)
+  );
+  margin: 2rem 0;
+  color: #fff;
+  box-shadow: 0 0 1rem rgba(0, 183, 255, 0.5);
+}
