@@ -16,6 +16,9 @@
   transform: translateX(20%);
   position: absolute;
   z-index: -1;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
 }
 .main {
   width: 60%;
@@ -104,7 +107,7 @@
 }
 
 .sub button {
-  width: 70%;
+  width: max-content;
   background-image: none;
   background-color: #fff !important;
   color: var(--primary-color);

@@ -1,10 +1,10 @@
-import { AnyAction } from "redux";
+import { ToggleAuthenticate } from "../../pages/authenticate";
 
 export interface StyleState {
   authenticate: "login" | "register";
 }
 
-type Action = AnyAction;
+type Action = ToggleAuthenticate;
 
 const INITIAL_STATE: StyleState = {
   authenticate: "register"
@@ -12,6 +12,8 @@ const INITIAL_STATE: StyleState = {
 
 const styleReducer = (state = INITIAL_STATE, action: Action): StyleState => {
   switch (action.type) {
+    case "ToggleAuth":
+      return { ...state, authenticate: action.payload };
     default:
       return state;
   }

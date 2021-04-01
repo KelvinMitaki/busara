@@ -49,7 +49,7 @@ button {
   );
   margin: 2rem 0;
   color: #fff;
-  box-shadow: 0 0 1rem rgba(0, 183, 255, 0.5);
+  box-shadow: 0 0 1rem rgba(0, 183, 255);
   cursor: pointer;
 }
 button:active,

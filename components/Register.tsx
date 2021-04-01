@@ -3,8 +3,11 @@ import styles from "../styles/authenticate.module.css";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdEmail, MdLocationOn, MdPhoneAndroid } from "react-icons/md";
 import { RiLockFill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { ToggleAuthenticate } from "../pages/authenticate";
 
 const Register = () => {
+  const dispatch = useDispatch();
   return (
     <form
       onSubmit={e => e.preventDefault()}
@@ -58,7 +61,16 @@ const Register = () => {
       </div>
       <div className={styles.sub}>
         <p>already have an account?</p>
-        <button>take me to login</button>
+        <button
+          onClick={() =>
+            dispatch<ToggleAuthenticate>({
+              type: "ToggleAuth",
+              payload: "login"
+            })
+          }
+        >
+          take me to login
+        </button>
       </div>
     </form>
   );
