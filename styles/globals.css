@@ -15,3 +15,21 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --primary-color: rgba(0, 183, 255);
+}
+
+.modal {
+  width: 70%;
+  min-height: 60vh;
+  box-shadow: 0 0 4rem rgba(0, 183, 255, 0.5);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+input {
+  box-shadow: 0 0 1rem rgba(0, 183, 255, 0.5);
+  border: none;
+  height: 4rem;
+  border-radius: 4rem;
+}

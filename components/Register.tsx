@@ -6,48 +6,57 @@ import { RiLockFill } from "react-icons/ri";
 
 const Register = () => {
   return (
-    <form onSubmit={e => e.preventDefault()}>
-      <div>
+    <form
+      onSubmit={e => e.preventDefault()}
+      className={`modal ${styles.register}`}
+    >
+      <div className={styles.main}>
         <p>hello</p>
-        <div>
-          <div>
-            <AiOutlineUser />
+        <div className={styles.input}>
+          <div className={styles.icon}>
+            <AiOutlineUser size={20} />
           </div>
+          <span></span>
           <input type="text" />
         </div>
-        <div>
-          <div>
-            <MdEmail />
+        <div className={styles.input}>
+          <div className={styles.icon}>
+            <MdEmail size={20} />
           </div>
+          <span></span>
           <input type="text" />
         </div>
-        <div>
-          <div>
-            <RiLockFill />
+        <div className={styles.input}>
+          <div className={styles.icon}>
+            <RiLockFill size={20} />
           </div>
+          <span></span>
           <input type="text" />
         </div>
-        <div>
-          <div>
-            <RiLockFill />
+        <div className={styles.input}>
+          <div className={styles.icon}>
+            <RiLockFill size={20} />
           </div>
+          <span></span>
           <input type="text" />
         </div>
-        <div>
-          <div>
-            <MdPhoneAndroid />
+        <div className={styles.input}>
+          <div className={styles.icon}>
+            <MdPhoneAndroid size={20} />
           </div>
+          <span></span>
           <input type="text" />
         </div>
-        <div>
-          <div>
-            <MdLocationOn />
+        <div className={styles.input}>
+          <div className={styles.icon}>
+            <MdLocationOn size={20} />
           </div>
+          <span></span>
           <input type="text" />
         </div>
         <button>create account</button>
       </div>
-      <div>
+      <div className={styles.sub}>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus
           numquam architecto suscipit libero, quod ipsam officiis, perspiciatis,
