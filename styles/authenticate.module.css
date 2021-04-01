@@ -9,6 +9,13 @@
 .register {
   display: flex;
   align-items: center;
+  background-color: #fff;
+}
+
+.login {
+  transform: translateX(20%);
+  position: absolute;
+  z-index: -1;
 }
 .main {
   width: 60%;
