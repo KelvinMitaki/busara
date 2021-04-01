@@ -2,17 +2,21 @@ import React from "react";
 import styles from "../styles/authenticate.module.css";
 import { MdEmail } from "react-icons/md";
 import { RiLockFill } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToggleAuthenticate } from "../pages/authenticate";
+import { Redux } from "../interfaces/Redux";
 const Login = () => {
   const dispatch = useDispatch();
+  const { authenticate } = useSelector((state: Redux) => state.style);
   return (
     <form
       onSubmit={e => e.preventDefault()}
-      className={`modal ${styles.login}`}
+      className={`modal ${styles.login} ${
+        authenticate === "login" ? styles.show__login : ""
+      }`}
     >
       <div className={styles.main}>
-        <p>register</p>
+        <p>login</p>
         <div className={styles.input}>
           <div className={styles.icon}>
             <MdEmail size={20} />

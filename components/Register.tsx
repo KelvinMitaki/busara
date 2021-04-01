@@ -3,15 +3,19 @@ import styles from "../styles/authenticate.module.css";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdEmail, MdLocationOn, MdPhoneAndroid } from "react-icons/md";
 import { RiLockFill } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToggleAuthenticate } from "../pages/authenticate";
+import { Redux } from "../interfaces/Redux";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const { authenticate } = useSelector((state: Redux) => state.style);
   return (
     <form
       onSubmit={e => e.preventDefault()}
-      className={`modal ${styles.register}`}
+      className={`modal ${styles.register} ${
+        authenticate === "register" ? styles.show__register : ""
+      }`}
     >
       <div className={styles.main}>
         <p>register</p>
