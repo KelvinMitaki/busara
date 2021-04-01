@@ -11,7 +11,7 @@ const Register = () => {
       className={`modal ${styles.register}`}
     >
       <div className={styles.main}>
-        <p>hello</p>
+        <p>register</p>
         <div className={styles.input}>
           <div className={styles.icon}>
             <AiOutlineUser size={20} />

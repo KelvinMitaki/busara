@@ -16,6 +16,21 @@
   flex-direction: column;
   align-items: center;
 }
+.main button {
+  width: 78%;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.main > * {
+  width: 100%;
+}
+.main p {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 1rem;
+  text-transform: uppercase;
+}
 .sub {
   width: 40%;
   align-self: stretch;
@@ -31,6 +46,7 @@
 .input {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 1rem 0;
   position: relative;
 }
@@ -39,6 +55,7 @@
   border-top-left-radius: 0%;
   border-bottom-left-radius: 0%;
   color: var(--primary-color);
+  width: 70%;
 }
 .input input::placeholder {
   color: var(--primary-color);
@@ -64,5 +81,5 @@
   height: 4rem;
   width: 1.1rem;
   background-color: #fff;
-  left: 14%;
+  left: 17%;
 }
