@@ -163,7 +163,7 @@
   }
   100% {
     z-index: 1;
-    transform: perspective(100px) translate3d(-100px, 0px, -30px);
+    transform: perspective(38px) translate3d(-100px, 0px, -30px);
     opacity: 0.5;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);
   }
@@ -216,14 +216,6 @@
     left: 19%;
   }
 }
-@media only screen and (max-height: 650px) {
-  .register {
-    height: 65vh;
-  }
-  .show__register.register {
-    height: max-content;
-  }
-}
 @media only screen and (max-width: 630px) {
   .input span {
     left: 19%;
@@ -238,14 +230,14 @@
   }
   @keyframes overshadowing-sx {
     100% {
-      transform: perspective(100px) translate3d(-63px, 0px, -30px);
+      transform: perspective(38px) translate3d(-63px, 0px, -30px);
     }
   }
 }
 @media only screen and (max-width: 400px) {
   @keyframes overshadowing-sx {
     100% {
-      transform: perspective(100px) translate3d(0px, 0px, -30px);
+      transform: perspective(38px) translate3d(0px, 0px, -30px);
     }
   }
 }
