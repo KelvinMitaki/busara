@@ -83,6 +83,7 @@
   justify-content: center;
   padding: 1rem 0;
   position: relative;
+  margin-bottom: 1rem;
 }
 
 .input input {
@@ -116,6 +117,11 @@
   width: 1.1rem;
   background-color: #fff;
   left: 17%;
+}
+.error {
+  position: absolute;
+  bottom: -1.3rem;
+  color: red;
 }
 .sub {
   display: flex;

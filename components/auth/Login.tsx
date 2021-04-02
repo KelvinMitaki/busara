@@ -7,6 +7,7 @@ import { ToggleAuthenticate } from "../../pages/authenticate";
 import { Redux } from "../../interfaces/Redux";
 import { Field, reduxForm } from "redux-form";
 import Input from "../reduxForm/Input";
+import validator from "validator";
 interface FormValues {
   username: string;
   password: string;
@@ -69,5 +70,20 @@ const Login = () => {
     </form>
   );
 };
-
-export default reduxForm({ form: "Login" })(Login);
+const validate = (formValues: FormValues) => {
+  const errors = {} as FormValues;
+  if (
+    !formValues.username ||
+    (formValues.username && !validator.isEmail(formValues.username))
+  ) {
+    errors.username = "Please enter a valid email";
+  }
+  if (
+    !formValues.password ||
+    (formValues.password && formValues.password.trim())
+  ) {
+    errors.password = "Password must be six characters minimum";
+  }
+  return errors;
+};
+export default reduxForm({ form: "Login", validate })(Login);

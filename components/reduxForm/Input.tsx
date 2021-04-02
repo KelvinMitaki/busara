@@ -16,6 +16,9 @@ const Input: React.FC<WrappedFieldProps & Props> = ({
   return (
     <>
       <input type={type} placeholder={placeholder} {...input} />
+      {meta.touched && meta.error && (
+        <div className={styles.error}>{meta.error}</div>
+      )}
     </>
   );
 };
