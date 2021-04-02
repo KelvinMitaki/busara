@@ -5,9 +5,16 @@ import { RiLockFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleAuthenticate } from "../../pages/authenticate";
 import { Redux } from "../../interfaces/Redux";
+import { Field, reduxForm } from "redux-form";
+import Input from "../reduxForm/Input";
+interface FormValues {
+  username: string;
+  password: string;
+}
 const Login = () => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
+
   return (
     <form
       onSubmit={e => e.preventDefault()}
@@ -22,14 +29,14 @@ const Login = () => {
             <MdEmail size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Email" />
+          <Field component={Input} placeholder="Email" name="username" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <RiLockFill size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Password" />
+          <Field component={Input} placeholder="Password" name="password" />
         </div>
         <button>continue</button>
         <div className={styles.sm}>
@@ -63,4 +70,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default reduxForm({ form: "Login" })(Login);
