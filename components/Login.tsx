@@ -32,6 +32,19 @@ const Login = () => {
           <input type="text" placeholder="Password" />
         </div>
         <button>continue</button>
+        <div className={styles.sm}>
+          <p>don't have an account?</p>
+          <div
+            onClick={() =>
+              dispatch<ToggleAuthenticate>({
+                type: "ToggleAuth",
+                payload: "register"
+              })
+            }
+          >
+            register
+          </div>
+        </div>
       </div>
       <div className={styles.sub}>
         <p>don't have an account?</p>

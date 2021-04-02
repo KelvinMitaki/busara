@@ -139,7 +139,21 @@
   font-size: 1.7rem;
   text-transform: uppercase;
 }
-
+.sm {
+  text-transform: capitalize;
+  display: none;
+}
+.sm p {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+.sm div {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sm div:hover {
+  text-decoration: underline;
+}
 @keyframes overshadowing-sx {
   0% {
     z-index: 2;
@@ -190,10 +204,16 @@
   .login {
     justify-content: center;
   }
-  @media only screen and (max-width: 710px) {
-    .input span {
-      left: 19%;
-    }
+  .sm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+}
+@media only screen and (max-width: 710px) {
+  .input span {
+    left: 19%;
   }
 }
 @media only screen and (max-height: 650px) {

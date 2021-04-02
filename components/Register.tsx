@@ -62,6 +62,19 @@ const Register = () => {
           <input type="text" placeholder="Location" />
         </div>
         <button>create account</button>
+        <div className={styles.sm}>
+          <p>already have an account?</p>
+          <div
+            onClick={() =>
+              dispatch<ToggleAuthenticate>({
+                type: "ToggleAuth",
+                payload: "login"
+              })
+            }
+          >
+            login
+          </div>
+        </div>
       </div>
       <div className={styles.sub}>
         <p>already have an account?</p>
