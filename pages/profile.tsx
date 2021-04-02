@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../components/Layout";
-import Sidebar from "../components/Sidebar";
+import Layout from "../components/layout/Layout";
+import Sidebar from "../components/layout/Sidebar";
 import styles from "../styles/profile.module.css";
 
 export interface User {

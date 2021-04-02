@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import Sidebar from "../components/Sidebar";
+import Layout from "../components/layout/Layout";
+import Sidebar from "../components/layout/Sidebar";
 import styles from "../styles/Home.module.css";
 
 const survey = () => {

@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "../styles/authenticate.module.css";
+import styles from "../../styles/authenticate.module.css";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdEmail, MdLocationOn, MdPhoneAndroid } from "react-icons/md";
 import { RiLockFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { ToggleAuthenticate } from "../pages/authenticate";
-import { Redux } from "../interfaces/Redux";
+import { ToggleAuthenticate } from "../../pages/authenticate";
+import { Redux } from "../../interfaces/Redux";
 
 const Register = () => {
   const dispatch = useDispatch();

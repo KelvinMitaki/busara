@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../components/Layout";
-import Login from "../components/Login";
-import Register from "../components/Register";
+import Layout from "../components/layout/Layout";
+import Login from "../components/auth/Login";
+import Register from "../components/auth/Register";
 import styles from "../styles/authenticate.module.css";
 
 export interface ToggleAuthenticate {

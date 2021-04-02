@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "../styles/authenticate.module.css";
+import styles from "../../styles/authenticate.module.css";
 import { MdEmail } from "react-icons/md";
 import { RiLockFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { ToggleAuthenticate } from "../pages/authenticate";
-import { Redux } from "../interfaces/Redux";
+import { ToggleAuthenticate } from "../../pages/authenticate";
+import { Redux } from "../../interfaces/Redux";
 const Login = () => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);

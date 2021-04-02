@@ -1,10 +1,12 @@
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { AnyAction, combineReducers, createStore, Store } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { reducer as formReducer } from "redux-form";
 import styleReducer from "./reducers/styleReducer";
 
 const combinedReducer = combineReducers({
-  style: styleReducer
+  style: styleReducer,
+  form: formReducer
 });
 
 const reducer = (state: any, action: AnyAction) => {
