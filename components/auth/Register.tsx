@@ -6,6 +6,17 @@ import { RiLockFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleAuthenticate } from "../../pages/authenticate";
 import { Redux } from "../../interfaces/Redux";
+import { Field, reduxForm } from "redux-form";
+import Input from "../reduxForm/Input";
+
+interface FormValues {
+  full_name: string;
+  email: string;
+  password1: string;
+  password2: string;
+  phone_number: string;
+  location?: string;
+}
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -24,42 +35,50 @@ const Register = () => {
             <AiOutlineUser size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Username" />
+          <Field component={Input} placeholder="Username" name="full_name" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <MdEmail size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Email" />
+          <Field component={Input} placeholder="Email" name="email" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <RiLockFill size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Password" />
+          <Field component={Input} placeholder="Password" name="password1" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <RiLockFill size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Confirm Password" />
+          <Field
+            component={Input}
+            placeholder="Confirm Password"
+            name="password2"
+          />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <MdPhoneAndroid size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Phone Number" />
+          <Field
+            component={Input}
+            placeholder="Phone Number"
+            name="phone_number"
+          />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
             <MdLocationOn size={20} />
           </div>
           <span></span>
-          <input type="text" placeholder="Location" />
+          <Field component={Input} placeholder="Location" name="location" />
         </div>
         <button>create account</button>
         <div className={styles.sm}>
@@ -93,4 +112,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default reduxForm({ form: "Register" })(Register);

@@ -14,9 +14,9 @@ const Input: React.FC<WrappedFieldProps & Props> = ({
   type
 }) => {
   return (
-    <div>
+    <>
       <input type={type} placeholder={placeholder} {...input} />
-    </div>
+    </>
   );
 };
 
