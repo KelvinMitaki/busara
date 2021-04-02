@@ -76,7 +76,7 @@ const validate = (formValues: FormValues) => {
     !formValues.username ||
     (formValues.username && !validator.isEmail(formValues.username))
   ) {
-    errors.username = "Please enter a valid email";
+    errors.username = "Enter a valid email";
   }
   if (
     !formValues.password ||

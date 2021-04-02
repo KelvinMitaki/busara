@@ -8,6 +8,7 @@ import { ToggleAuthenticate } from "../../pages/authenticate";
 import { Redux } from "../../interfaces/Redux";
 import { Field, reduxForm } from "redux-form";
 import Input from "../reduxForm/Input";
+import validator from "validator";
 
 interface FormValues {
   full_name: string;
@@ -112,4 +113,40 @@ const Register = () => {
   );
 };
 
-export default reduxForm({ form: "Register" })(Register);
+const validate = (formValues: FormValues) => {
+  const errors = {} as FormValues;
+  if (
+    !formValues.full_name ||
+    (formValues.full_name && !formValues.full_name.trim().length)
+  ) {
+    errors.full_name = "Enter a valid full name";
+  }
+  if (
+    !formValues.email ||
+    (formValues.email && !validator.isEmail(formValues.email))
+  ) {
+    errors.email = "Enter a valid email";
+  }
+  if (
+    !formValues.password1 ||
+    (formValues.password1 && formValues.password1.trim().length < 6)
+  ) {
+    errors.password1 = "Password must be six characters minimum";
+  }
+  if (formValues.password1 !== formValues.password2) {
+    errors.password2 = "Passwords do not match";
+  }
+  if (
+    !formValues.phone_number ||
+    (formValues.phone_number &&
+      !validator.isNumeric(formValues.phone_number)) ||
+    (formValues.phone_number && formValues.phone_number.trim().length !== 12) ||
+    (formValues.phone_number &&
+      formValues.phone_number.trim().slice(0, 4) !== "2547")
+  ) {
+    errors.phone_number = "Enter a valid phone number starting with 2547";
+  }
+  return errors;
+};
+
+export default reduxForm({ form: "Register", validate })(Register);
