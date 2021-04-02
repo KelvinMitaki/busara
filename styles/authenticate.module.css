@@ -12,14 +12,14 @@
   background-color: #fff;
   z-index: -1;
   transition: all 0.2s;
-  transform: scale(0.6) translateX(38%);
+  /* transform: scale(0.6) translateX(38%); */
   animation-name: overshadowing-sx;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 
 .login {
-  transform: translateX(12%);
+  /* transform: translateX(12%); */
   position: absolute;
   z-index: -1;
   display: flex;
@@ -32,14 +32,14 @@
 }
 .show__register.register {
   z-index: 1;
-  transform: scale(1) translateX(7%);
+  /* transform: scale(1) translateX(7%); */
   animation-name: foregrounding-sx;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
 }
 .show__login.login {
   z-index: 1;
-  transform: translateX(0);
+  /* transform: translateX(0); */
   animation-name: foregrounding-sx;
   animation-duration: 0.9s;
   animation-fill-mode: forwards;
@@ -169,5 +169,68 @@
     z-index: 2;
     transform: perspective(100px) translate3d(0px, 0px, 0px);
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  .input span {
+    left: 17.5%;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .input span {
+    left: 18%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .sub {
+    display: none;
+  }
+  .register,
+  .login {
+    justify-content: center;
+  }
+  @media only screen and (max-width: 710px) {
+    .input span {
+      left: 19%;
+    }
+  }
+}
+@media only screen and (max-height: 650px) {
+  .register {
+    height: 65vh;
+  }
+  .show__register.register {
+    height: max-content;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .input span {
+    left: 19%;
+  }
+}
+@media only screen and (max-width: 530px) {
+  .main {
+    width: 100%;
+  }
+  .input span {
+    left: 18%;
+  }
+  @keyframes overshadowing-sx {
+    100% {
+      transform: perspective(100px) translate3d(-63px, 0px, -30px);
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  @keyframes overshadowing-sx {
+    100% {
+      transform: perspective(100px) translate3d(0px, 0px, -30px);
+    }
+  }
+}
+@media only screen and (max-width: 350px) {
+  .input span {
+    left: 19%;
   }
 }

@@ -56,3 +56,14 @@ button:active,
 button:focus {
   outline: none;
 }
+
+@media only screen and (max-width: 500px) {
+  .modal {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .modal {
+    width: 90%;
+  }
+}
