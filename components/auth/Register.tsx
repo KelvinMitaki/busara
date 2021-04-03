@@ -48,7 +48,11 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
           setLoading(false);
           dispatch(reset("Register"));
         } catch (error) {
-          if (error.response.data.Error) {
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.Error
+          ) {
             setErr(error.response.data.Error);
           }
           setLoading(false);
