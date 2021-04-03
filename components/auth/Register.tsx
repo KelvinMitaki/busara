@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/authenticate.module.css";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdEmail, MdLocationOn, MdPhoneAndroid } from "react-icons/md";
@@ -6,9 +6,10 @@ import { RiLockFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleAuthenticate } from "../../pages/authenticate";
 import { Redux } from "../../interfaces/Redux";
-import { Field, InjectedFormProps, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm, reset } from "redux-form";
 import Input from "../reduxForm/Input";
 import validator from "validator";
+import axios from "../../axiosConfig/axios";
 
 interface FormValues {
   full_name: string;
@@ -16,17 +17,37 @@ interface FormValues {
   password1: string;
   password2: string;
   phone_number: string;
-  location?: string;
+  location?: "Dummy";
+  username?: string;
+  referral_code?: string;
+  device_details?: string;
 }
 
 const Register: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
-  // http://104.248.0.49/api/v1/users/registration/
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <form
-      onSubmit={props.handleSubmit(formValues => console.log(formValues))}
-      className={`modal ${styles.register} ${
+      onSubmit={props.handleSubmit(async formValues => {
+        try {
+          formValues.phone_number = `+${formValues.phone_number}`;
+          formValues.username = formValues.email;
+          formValues.referral_code = "";
+          formValues.location = "Dummy";
+          formValues.device_details = ({
+            device: "Dummy"
+          } as unknown) as string;
+          setLoading(true);
+          await axios.post("/users/registration", formValues);
+          setLoading(false);
+          dispatch(reset("Register"));
+        } catch (error) {
+          console.log(error);
+          setLoading(false);
+        }
+      })}
+      className={`custom_modal ${styles.register} ${
         authenticate === "register" ? styles.show__register : ""
       }`}
     >
@@ -51,7 +72,12 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             <RiLockFill size={20} />
           </div>
           <span></span>
-          <Field component={Input} placeholder="Password" name="password1" />
+          <Field
+            component={Input}
+            placeholder="Password"
+            name="password1"
+            type="password"
+          />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>
@@ -62,6 +88,7 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             component={Input}
             placeholder="Confirm Password"
             name="password2"
+            type="password"
           />
         </div>
         <div className={styles.input}>
@@ -75,14 +102,12 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             name="phone_number"
           />
         </div>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <MdLocationOn size={20} />
-          </div>
-          <span></span>
-          <Field component={Input} placeholder="Location" name="location" />
-        </div>
-        <button>create account</button>
+        <button>
+          create account
+          {loading && (
+            <span className="spinner-border" style={{ marginLeft: "1rem" }} />
+          )}
+        </button>
         <div className={styles.sm}>
           <p>already have an account?</p>
           <div

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/authenticate.module.css";
 import { MdEmail } from "react-icons/md";
 import { RiLockFill } from "react-icons/ri";
@@ -15,11 +15,12 @@ interface FormValues {
 const Login: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <form
       onSubmit={props.handleSubmit(formValues => console.log(formValues))}
-      className={`modal ${styles.login} ${
+      className={`custom_modal ${styles.login} ${
         authenticate === "login" ? styles.show__login : ""
       }`}
     >
@@ -51,6 +52,9 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
             }
           >
             register
+            {loading && (
+              <span className="spinner-border" style={{ marginLeft: "1rem" }} />
+            )}
           </div>
         </div>
       </div>

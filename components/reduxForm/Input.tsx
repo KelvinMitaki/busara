@@ -4,7 +4,7 @@ import styles from "../../styles/authenticate.module.css";
 
 interface Props {
   placeholder: string;
-  type: string;
+  type?: string;
 }
 
 const Input: React.FC<WrappedFieldProps & Props> = ({
@@ -16,7 +16,7 @@ const Input: React.FC<WrappedFieldProps & Props> = ({
   return (
     <>
       <input
-        type={type}
+        type={type || "text"}
         placeholder={placeholder}
         {...input}
         onCopy={e => e.preventDefault()}
