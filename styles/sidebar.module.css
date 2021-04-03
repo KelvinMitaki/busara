@@ -3,14 +3,14 @@
   max-width: 30rem;
   min-height: 100vh;
   padding: 2rem;
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-light);
 }
 
 .container div {
   display: flex;
   align-items: center;
   height: 4rem;
-  color: #fff;
+  color: var(--black);
   margin: 1rem 0;
   transition: all 0.2s;
   padding: 2rem;
@@ -19,8 +19,9 @@
 
 .container div:hover,
 .active {
-  background-color: var(--primary-color-dark);
+  background-color: var(--secondary-color);
   cursor: pointer;
+  color: var(--dull-white) !important;
 }
 
 .container p {

@@ -1,4 +1,44 @@
 .container {
   font-size: 1.6rem;
   display: flex;
+  background-color: var(--secondary-color);
+  color: var(--dull-white);
+}
+
+.content {
+  padding: 4rem;
+  width: 100%;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row input {
+  background-color: var(--secondary-color);
+  box-shadow: none;
+  border-radius: 0%;
+  color: var(--primary-color-light);
+  width: 90%;
+}
+.property {
+  border-bottom: 2px solid var(--primary-color-light);
+  width: 30%;
+}
+.property div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.row svg {
+  color: var(--primary-color-light);
+}
+.row > * {
+  margin: 2rem 0;
+}
+
+.row label {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: capitalize;
 }

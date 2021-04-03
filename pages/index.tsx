@@ -7,7 +7,7 @@ const survey = () => {
     <Layout title="Survey">
       <div className={styles.container}>
         <Sidebar active="survey" />
-        <div>
+        <div className={styles.main}>
           <p>Survey</p>
         </div>
       </div>

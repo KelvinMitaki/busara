@@ -1,4 +1,10 @@
 .container {
   display: flex;
   font-size: 1.6rem;
+  background-color: var(--secondary-color);
+}
+
+.main {
+  padding: 4rem;
+  width: 100%;
 }
