@@ -6,7 +6,7 @@ import { RiLockFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleAuthenticate } from "../../pages/authenticate";
 import { Redux } from "../../interfaces/Redux";
-import { Field, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import Input from "../reduxForm/Input";
 import validator from "validator";
 
@@ -19,12 +19,12 @@ interface FormValues {
   location?: string;
 }
 
-const Register = () => {
+const Register: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
   return (
     <form
-      onSubmit={e => e.preventDefault()}
+      onSubmit={props.handleSubmit(formValues => console.log(formValues))}
       className={`modal ${styles.register} ${
         authenticate === "register" ? styles.show__register : ""
       }`}
