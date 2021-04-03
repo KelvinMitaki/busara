@@ -8,6 +8,7 @@ import { Redux } from "../../interfaces/Redux";
 import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import Input from "../reduxForm/Input";
 import validator from "validator";
+import axios from "../../axiosConfig/axios";
 interface FormValues {
   username: string;
   password: string;
@@ -16,10 +17,30 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
   const [loading, setLoading] = useState<boolean>(false);
-
+  const [err, setErr] = useState<string>("");
   return (
     <form
-      onSubmit={props.handleSubmit(formValues => console.log(formValues))}
+      onSubmit={props.handleSubmit(async formValues => {
+        try {
+          setLoading(true);
+          setErr("");
+          await axios.post("/oauth/token/", {
+            ...formValues,
+            grant_type: "password"
+          });
+          setLoading(false);
+        } catch (error) {
+          console.log(error.response);
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.Error
+          ) {
+            setErr(error.response.data.Error);
+          }
+          setLoading(false);
+        }
+      })}
       className={`custom_modal ${styles.login} ${
         authenticate === "login" ? styles.show__login : ""
       }`}
@@ -40,7 +61,13 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
           <span></span>
           <Field component={Input} placeholder="Password" name="password" />
         </div>
-        <button>continue</button>
+        <button>
+          continue
+          {loading && (
+            <span className="spinner-border" style={{ marginLeft: "1rem" }} />
+          )}
+        </button>
+        {err && <div className={styles.server_error}>{err}</div>}
         <div className={styles.sm}>
           <p>don't have an account?</p>
           <div
@@ -52,9 +79,6 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
             }
           >
             register
-            {loading && (
-              <span className="spinner-border" style={{ marginLeft: "1rem" }} />
-            )}
           </div>
         </div>
       </div>
