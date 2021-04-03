@@ -5,11 +5,11 @@
   justify-content: center;
   min-height: 100vh;
   color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 .register {
   display: flex;
   align-items: center;
-  background-color: #fff;
   z-index: -1;
   transition: all 0.2s;
   /* transform: scale(0.6) translateX(38%); */
@@ -24,7 +24,6 @@
   z-index: -1;
   display: flex;
   align-items: center;
-  background-color: #fff;
   transition: all 0.2s;
   animation-name: overshadowing-sx;
   animation-duration: 0.9s;
@@ -49,6 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--secondary-color);
 }
 .main button {
   width: 78%;
@@ -100,7 +100,7 @@
 }
 .icon {
   height: 4rem;
-  box-shadow: 0rem 0 1rem rgba(0, 183, 255, 0.5);
+  box-shadow: 0rem 0 1rem var(--primary-color-light);
   width: 4rem;
   display: flex;
   align-items: center;
