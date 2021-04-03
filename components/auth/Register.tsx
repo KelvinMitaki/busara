@@ -27,6 +27,7 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
   const [loading, setLoading] = useState<boolean>(false);
+  const [err, setErr] = useState<string>("");
   return (
     <form
       onSubmit={props.handleSubmit(async formValues => {
@@ -42,11 +43,14 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             } as unknown) as string
           } as FormValues;
           setLoading(true);
+          setErr("");
           await axios.post("/users/registration/", modifiedFormValues);
           setLoading(false);
           dispatch(reset("Register"));
         } catch (error) {
-          console.log(error.response.data);
+          if (error.response.data.Error) {
+            setErr(error.response.data.Error);
+          }
           setLoading(false);
         }
       })}
@@ -111,6 +115,7 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             <span className="spinner-border" style={{ marginLeft: "1rem" }} />
           )}
         </button>
+        {err && <div className={styles.server_error}>{err}</div>}
         <div className={styles.sm}>
           <p>already have an account?</p>
           <div

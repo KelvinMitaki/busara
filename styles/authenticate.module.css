@@ -120,8 +120,14 @@
 }
 .error {
   position: absolute;
-  bottom: -1.3rem;
+  bottom: -1.5rem;
   color: red;
+  font-weight: 600;
+}
+.server_error {
+  color: red;
+  text-align: center;
+  font-weight: 600;
 }
 .sub {
   display: flex;
