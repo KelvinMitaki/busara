@@ -1,6 +1,5 @@
 .container {
-  width: 30%;
-  max-width: 30rem;
+  width: 30rem;
   min-height: 100vh;
   padding: 2rem;
   background-color: var(--primary-color-light);
