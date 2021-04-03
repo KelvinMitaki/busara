@@ -31,19 +31,22 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
     <form
       onSubmit={props.handleSubmit(async formValues => {
         try {
-          formValues.phone_number = `+${formValues.phone_number}`;
-          formValues.username = formValues.email;
-          formValues.referral_code = "";
-          formValues.location = "Dummy";
-          formValues.device_details = ({
-            device: "Dummy"
-          } as unknown) as string;
+          const modifiedFormValues = {
+            ...formValues,
+            phone_number: `+${formValues.phone_number}`,
+            username: formValues.email,
+            referral_code: "",
+            location: "Dummy",
+            device_details: JSON.stringify({
+              device: "Dummy"
+            } as unknown) as string
+          } as FormValues;
           setLoading(true);
-          await axios.post("/users/registration", formValues);
+          await axios.post("/users/registration/", modifiedFormValues);
           setLoading(false);
           dispatch(reset("Register"));
         } catch (error) {
-          console.log(error);
+          console.log(error.response.data);
           setLoading(false);
         }
       })}
