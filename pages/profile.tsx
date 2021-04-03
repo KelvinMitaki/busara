@@ -30,7 +30,7 @@ const profile = () => {
   return (
     <Layout title="Profile">
       <div className={styles.container}>
-        <Sidebar />
+        <Sidebar active="profile" />
         <div>
           <p>profile</p>
         </div>

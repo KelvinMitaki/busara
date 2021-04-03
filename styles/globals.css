@@ -38,7 +38,9 @@ a {
 }
 
 :root {
+  --primary-color-light: rgb(0, 250, 255);
   --primary-color: rgba(0, 183, 255);
+  --primary-color-dark: rgb(0, 110, 255);
 }
 
 .custom_modal {

@@ -1,0 +1,30 @@
+.container {
+  width: 30%;
+  max-width: 30rem;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--primary-color);
+}
+
+.container div {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  color: #fff;
+  margin: 1rem 0;
+  transition: all 0.2s;
+  padding: 2rem;
+  border-radius: 0.2rem;
+}
+
+.container div:hover,
+.active {
+  background-color: var(--primary-color-dark);
+  cursor: pointer;
+}
+
+.container p {
+  margin: 0%;
+  margin-left: 1rem;
+  font-weight: 600;
+}

@@ -6,7 +6,7 @@ const survey = () => {
   return (
     <Layout title="Survey">
       <div className={styles.container}>
-        <Sidebar />
+        <Sidebar active="survey" />
         <div>
           <p>Survey</p>
         </div>
