@@ -22,6 +22,7 @@ interface FormValues {
 const Register: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
+  // http://104.248.0.49/api/v1/users/registration/
   return (
     <form
       onSubmit={props.handleSubmit(formValues => console.log(formValues))}
@@ -36,7 +37,7 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             <AiOutlineUser size={20} />
           </div>
           <span></span>
-          <Field component={Input} placeholder="Username" name="full_name" />
+          <Field component={Input} placeholder="Full Name" name="full_name" />
         </div>
         <div className={styles.input}>
           <div className={styles.icon}>

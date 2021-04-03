@@ -15,7 +15,17 @@ const Input: React.FC<WrappedFieldProps & Props> = ({
 }) => {
   return (
     <>
-      <input type={type} placeholder={placeholder} {...input} />
+      <input
+        type={type}
+        placeholder={placeholder}
+        {...input}
+        onCopy={e => e.preventDefault()}
+        onCut={e => e.preventDefault()}
+        onPaste={e => e.preventDefault()}
+        {...(input.name === "full_name" && {
+          style: { textTransform: "capitalize" }
+        })}
+      />
       {meta.touched && meta.error && (
         <div className={styles.error}>{meta.error}</div>
       )}
