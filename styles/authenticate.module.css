@@ -241,13 +241,6 @@
     left: 18%;
   }
 }
-@media only screen and (max-width: 400px) {
-  @keyframes overshadowing-sx {
-    100% {
-      transform: perspective(38px) translate3d(0px, 0px, -30px);
-    }
-  }
-}
 @media only screen and (max-width: 350px) {
   .input span {
     left: 19%;
