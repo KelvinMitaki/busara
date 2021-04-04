@@ -29,111 +29,114 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<string>("");
   return (
-    <form
-      onSubmit={props.handleSubmit(async formValues => {
-        try {
-          const modifiedFormValues = {
-            ...formValues,
-            phone_number: `+${formValues.phone_number}`,
-            username: formValues.email,
-            referral_code: "",
-            location: "Dummy",
-            device_details: JSON.stringify({
-              device: "Dummy"
-            } as unknown) as string
-          } as FormValues;
-          setLoading(true);
-          setErr("");
-          await axios.post("/users/registration/", modifiedFormValues);
-          setLoading(false);
-          dispatch(reset("Register"));
-        } catch (error) {
-          if (
-            error.response &&
-            error.response.data &&
-            error.response.data.Error
-          ) {
-            setErr(error.response.data.Error);
-          }
-          setLoading(false);
-        }
-      })}
+    <div
       className={`custom_modal ${styles.register} ${
         authenticate === "register" ? styles.show__register : ""
       }`}
     >
-      <div className={styles.main}>
-        <p>register</p>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <AiOutlineUser size={20} />
-          </div>
-          <span></span>
-          <Field component={Input} placeholder="Full Name" name="full_name" />
-        </div>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <MdEmail size={20} />
-          </div>
-          <span></span>
-          <Field component={Input} placeholder="Email" name="email" />
-        </div>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <RiLockFill size={20} />
-          </div>
-          <span></span>
-          <Field
-            component={Input}
-            placeholder="Password"
-            name="password1"
-            type="password"
-          />
-        </div>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <RiLockFill size={20} />
-          </div>
-          <span></span>
-          <Field
-            component={Input}
-            placeholder="Confirm Password"
-            name="password2"
-            type="password"
-          />
-        </div>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <MdPhoneAndroid size={20} />
-          </div>
-          <span></span>
-          <Field
-            component={Input}
-            placeholder="Phone Number"
-            name="phone_number"
-          />
-        </div>
-        <button>
-          create account
-          {loading && (
-            <span className="spinner-border" style={{ marginLeft: "1rem" }} />
-          )}
-        </button>
-        {err && <div className={styles.server_error}>{err}</div>}
-        <div className={styles.sm}>
-          <p>already have an account?</p>
-          <div
-            onClick={() =>
-              dispatch<ToggleAuthenticate>({
-                type: "ToggleAuth",
-                payload: "login"
-              })
+      <form
+        onSubmit={props.handleSubmit(async formValues => {
+          try {
+            const modifiedFormValues = {
+              ...formValues,
+              phone_number: `+${formValues.phone_number}`,
+              username: formValues.email,
+              referral_code: "",
+              location: "Dummy",
+              device_details: JSON.stringify({
+                device: "Dummy"
+              } as unknown) as string
+            } as FormValues;
+            setLoading(true);
+            setErr("");
+            await axios.post("/users/registration/", modifiedFormValues);
+            setLoading(false);
+            dispatch(reset("Register"));
+          } catch (error) {
+            if (
+              error.response &&
+              error.response.data &&
+              error.response.data.Error
+            ) {
+              setErr(error.response.data.Error);
             }
-          >
-            login
+            setLoading(false);
+          }
+        })}
+      >
+        <div className={styles.main}>
+          <p>register</p>
+          <div className={styles.input}>
+            <div className={styles.icon}>
+              <AiOutlineUser size={20} />
+            </div>
+            <span></span>
+            <Field component={Input} placeholder="Full Name" name="full_name" />
+          </div>
+          <div className={styles.input}>
+            <div className={styles.icon}>
+              <MdEmail size={20} />
+            </div>
+            <span></span>
+            <Field component={Input} placeholder="Email" name="email" />
+          </div>
+          <div className={styles.input}>
+            <div className={styles.icon}>
+              <RiLockFill size={20} />
+            </div>
+            <span></span>
+            <Field
+              component={Input}
+              placeholder="Password"
+              name="password1"
+              type="password"
+            />
+          </div>
+          <div className={styles.input}>
+            <div className={styles.icon}>
+              <RiLockFill size={20} />
+            </div>
+            <span></span>
+            <Field
+              component={Input}
+              placeholder="Confirm Password"
+              name="password2"
+              type="password"
+            />
+          </div>
+          <div className={styles.input}>
+            <div className={styles.icon}>
+              <MdPhoneAndroid size={20} />
+            </div>
+            <span></span>
+            <Field
+              component={Input}
+              placeholder="Phone Number"
+              name="phone_number"
+            />
+          </div>
+          <button>
+            create account
+            {loading && (
+              <span className="spinner-border" style={{ marginLeft: "1rem" }} />
+            )}
+          </button>
+          {err && <div className={styles.server_error}>{err}</div>}
+          <div className={styles.sm}>
+            <p>already have an account?</p>
+            <div
+              onClick={() =>
+                dispatch<ToggleAuthenticate>({
+                  type: "ToggleAuth",
+                  payload: "login"
+                })
+              }
+            >
+              login
+            </div>
           </div>
         </div>
-      </div>
+      </form>
       <div className={styles.sub}>
         <p>already have an account?</p>
         <button
@@ -147,7 +150,7 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
           take me to login
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 

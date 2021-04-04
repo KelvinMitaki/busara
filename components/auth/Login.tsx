@@ -19,69 +19,72 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<string>("");
   return (
-    <form
-      onSubmit={props.handleSubmit(async formValues => {
-        try {
-          setLoading(true);
-          setErr("");
-          await axios.post("/oauth/token/", {
-            ...formValues,
-            grant_type: "password"
-          });
-          setLoading(false);
-        } catch (error) {
-          console.log(error.response);
-          if (
-            error.response &&
-            error.response.data &&
-            error.response.data.Error
-          ) {
-            setErr(error.response.data.Error);
-          }
-          setLoading(false);
-        }
-      })}
+    <div
       className={`custom_modal ${styles.login} ${
         authenticate === "login" ? styles.show__login : ""
       }`}
     >
-      <div className={styles.main}>
-        <p>login</p>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <MdEmail size={20} />
-          </div>
-          <span></span>
-          <Field component={Input} placeholder="Email" name="username" />
-        </div>
-        <div className={styles.input}>
-          <div className={styles.icon}>
-            <RiLockFill size={20} />
-          </div>
-          <span></span>
-          <Field component={Input} placeholder="Password" name="password" />
-        </div>
-        <button>
-          continue
-          {loading && (
-            <span className="spinner-border" style={{ marginLeft: "1rem" }} />
-          )}
-        </button>
-        {err && <div className={styles.server_error}>{err}</div>}
-        <div className={styles.sm}>
-          <p>don't have an account?</p>
-          <div
-            onClick={() =>
-              dispatch<ToggleAuthenticate>({
-                type: "ToggleAuth",
-                payload: "register"
-              })
+      <form
+        onSubmit={props.handleSubmit(async formValues => {
+          try {
+            setLoading(true);
+            setErr("");
+            await axios.post("/oauth/token/", {
+              ...formValues,
+              grant_type: "password"
+            });
+            setLoading(false);
+          } catch (error) {
+            console.log(error.response);
+            if (
+              error.response &&
+              error.response.data &&
+              error.response.data.Error
+            ) {
+              setErr(error.response.data.Error);
             }
-          >
-            register
+            setLoading(false);
+          }
+        })}
+      >
+        <div className={styles.main}>
+          <p>login</p>
+          <div className={styles.input}>
+            <div className={styles.icon}>
+              <MdEmail size={20} />
+            </div>
+            <span></span>
+            <Field component={Input} placeholder="Email" name="username" />
+          </div>
+          <div className={styles.input}>
+            <div className={styles.icon}>
+              <RiLockFill size={20} />
+            </div>
+            <span></span>
+            <Field component={Input} placeholder="Password" name="password" />
+          </div>
+          <button>
+            continue
+            {loading && (
+              <span className="spinner-border" style={{ marginLeft: "1rem" }} />
+            )}
+          </button>
+          {err && <div className={styles.server_error}>{err}</div>}
+          <div className={styles.sm}>
+            <p>don't have an account?</p>
+            <div
+              onClick={() =>
+                dispatch<ToggleAuthenticate>({
+                  type: "ToggleAuth",
+                  payload: "register"
+                })
+              }
+            >
+              register
+            </div>
           </div>
         </div>
-      </div>
+      </form>
       <div className={styles.sub}>
         <p>don't have an account?</p>
         <button
@@ -95,7 +98,7 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
           take me to register
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 const validate = (formValues: FormValues) => {
