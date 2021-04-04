@@ -1,6 +1,6 @@
 import Layout from "../components/layout/Layout";
 import Sidebar from "../components/layout/Sidebar";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/survery.module.css";
 
 const survey = () => {
   return (
