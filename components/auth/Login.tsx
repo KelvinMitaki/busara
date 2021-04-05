@@ -3,21 +3,30 @@ import styles from "../../styles/authenticate.module.css";
 import { MdEmail } from "react-icons/md";
 import { RiLockFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
+import qs from "qs";
 import { ToggleAuthenticate } from "../../pages/authenticate";
 import { Redux } from "../../interfaces/Redux";
-import { Field, InjectedFormProps, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm, reset } from "redux-form";
 import Input from "../reduxForm/Input";
 import validator from "validator";
 import axios from "../../axiosConfig/axios";
+import Router from "next/router";
 interface FormValues {
   username: string;
   password: string;
 }
+
+export interface SetToken {
+  type: "setToken";
+  payload: string;
+}
+
 const Login: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<string>("");
+
   return (
     <div
       className={`custom_modal ${styles.login} ${
@@ -29,11 +38,26 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
           try {
             setLoading(true);
             setErr("");
-            await axios.post("/oauth/token/", {
-              ...formValues,
-              grant_type: "password"
+            const res = await axios.post(
+              "/oauth/token/",
+              qs.stringify({
+                ...formValues,
+                grant_type: "password"
+              }),
+              {
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                }
+              }
+            );
+            localStorage.setItem("token", res.data.access_token);
+            dispatch<SetToken>({
+              type: "setToken",
+              payload: res.data.access_token
             });
             setLoading(false);
+            dispatch(reset("Login"));
+            Router.replace("/");
           } catch (error) {
             console.log(error.response);
             if (
@@ -61,7 +85,12 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
               <RiLockFill size={20} />
             </div>
             <span></span>
-            <Field component={Input} placeholder="Password" name="password" />
+            <Field
+              component={Input}
+              placeholder="Password"
+              name="password"
+              type="password"
+            />
           </div>
           <button>
             continue
@@ -111,7 +140,7 @@ const validate = (formValues: FormValues) => {
   }
   if (
     !formValues.password ||
-    (formValues.password && formValues.password.trim())
+    (formValues.password && formValues.password.trim().length < 6)
   ) {
     errors.password = "Password must be six characters minimum";
   }
