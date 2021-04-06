@@ -81,12 +81,43 @@
   border-bottom: 2px solid var(--primary-color-light);
   width: 5%;
 }
+.FiChevronDown svg {
+  color: var(--primary-color-light);
+}
 .select_core {
   display: flex;
+  position: relative;
+  cursor: pointer;
 }
 .select_core input {
   width: 95%;
+  cursor: pointer;
 }
+.dropdown {
+  position: absolute;
+  top: 5rem;
+  background-color: var(--primary-color-light);
+  border-radius: 0.5rem;
+  width: 100%;
+  max-height: 40vh;
+  overflow-y: auto;
+  color: var(--secondary-color);
+  font-weight: 600;
+  border: 2px solid var(--primary-color);
+}
+.dropdown > * {
+  padding: 1rem;
+  height: 4rem;
+  transition: all 0.2s;
+}
+.dropdown > *:hover {
+  background-color: var(--secondary-color);
+  color: var(--dull-white);
+}
+.dropdown p {
+  margin: 0%;
+}
+
 @media only screen and (max-width: 767px) {
   .main {
     margin-top: 10rem;
