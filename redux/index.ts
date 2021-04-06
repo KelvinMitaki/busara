@@ -2,6 +2,7 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { AnyAction, combineReducers, createStore, Store } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { reducer as formReducer } from "redux-form";
+import storage from "redux-persist/lib/storage";
 import authReducer from "./reducers/authReducer";
 import styleReducer from "./reducers/styleReducer";
 
@@ -10,13 +11,14 @@ const combinedReducer = combineReducers({
   form: formReducer,
   auth: authReducer
 });
-
 const reducer = (state: any, action: AnyAction) => {
   if (action.type === HYDRATE) {
     const nextState = {
       ...state,
       ...action.payload
     };
+    console.log({ state });
+    console.log({ nextState });
     if (state.form) nextState.form = state.form;
     if (state.auth) nextState.auth = state.auth;
     return nextState;

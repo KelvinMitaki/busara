@@ -1,20 +1,18 @@
 import { AnyAction } from "redux";
-import { SetToken } from "../../components/auth/Login";
+import { User } from "../../pages/profile";
 
 export interface AuthState {
-  token: string | null;
+  currentUser: User | null;
 }
 
-type Action = SetToken;
+type Action = AnyAction;
 
 const INITIAL_STATE: AuthState = {
-  token: null
+  currentUser: null
 };
 
 const authReducer = (state = INITIAL_STATE, action: Action): AuthState => {
   switch (action.type) {
-    case "setToken":
-      return { ...state, token: action.payload };
     default:
       return state;
   }

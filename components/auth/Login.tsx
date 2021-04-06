@@ -16,11 +16,6 @@ interface FormValues {
   password: string;
 }
 
-export interface SetToken {
-  type: "setToken";
-  payload: string;
-}
-
 const Login: React.FC<InjectedFormProps<FormValues>> = props => {
   const dispatch = useDispatch();
   const { authenticate } = useSelector((state: Redux) => state.style);
@@ -47,14 +42,15 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
               {
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded"
+                },
+                auth: {
+                  username: process.env.NEXT_PUBLIC_CLIENT_ID,
+                  password: process.env.NEXT_PUBLIC_SECRET
                 }
               }
             );
             localStorage.setItem("token", res.data.access_token);
-            dispatch<SetToken>({
-              type: "setToken",
-              payload: res.data.access_token
-            });
+
             setLoading(false);
             dispatch(reset("Login"));
             Router.replace("/");

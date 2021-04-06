@@ -7,7 +7,7 @@ export interface StyleState {
 type Action = ToggleAuthenticate;
 
 const INITIAL_STATE: StyleState = {
-  authenticate: "register"
+  authenticate: "login"
 };
 
 const styleReducer = (state = INITIAL_STATE, action: Action): StyleState => {
