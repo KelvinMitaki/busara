@@ -25,11 +25,17 @@ const MultiSelect = () => {
         ref={openRef}
         className={styles.select_core}
       >
-        <input type="text" id="select" disabled />
-        <div className={styles.FiChevronDown}>
-          <FiChevronDown />
+        <input type="text" id="select" value="Nairobi" disabled />
+        <div
+          className={`${styles.FiChevronDown} ${
+            open ? styles.FiChevronDown__open : ""
+          }`}
+        >
+          <FiChevronDown size={20} />
         </div>
-        <div className={styles.dropdown}>
+        <div
+          className={`${styles.dropdown} ${open ? styles.dropdown__show : ""}`}
+        >
           <div>
             <p>test 1</p>
           </div>

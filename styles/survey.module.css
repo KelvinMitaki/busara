@@ -81,8 +81,14 @@
   border-bottom: 2px solid var(--primary-color-light);
   width: 5%;
 }
+
 .FiChevronDown svg {
+  transform: rotate(0);
+  transition: all 0.2s;
   color: var(--primary-color-light);
+}
+.FiChevronDown__open.FiChevronDown svg {
+  transform: rotate(180deg);
 }
 .select_core {
   display: flex;
@@ -99,10 +105,14 @@
   background-color: var(--primary-color-light);
   border-radius: 0.5rem;
   width: 100%;
-  max-height: 40vh;
+  max-height: 0%;
   overflow-y: auto;
   color: var(--secondary-color);
   font-weight: 600;
+  transition: all 0.2s;
+}
+.dropdown__show.dropdown {
+  max-height: 40vh;
   border: 2px solid var(--primary-color);
 }
 .dropdown > * {
