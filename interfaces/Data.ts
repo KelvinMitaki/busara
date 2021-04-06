@@ -80,7 +80,7 @@ export interface Survey {
   q_options: { id: number; name: string; sort_order: number }[];
   sort_order: number;
   text: string;
-  type: string;
+  type: "text" | "tel" | "multiselect";
   uploads: {
     file_description: string;
     file_name: string;

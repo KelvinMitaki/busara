@@ -32,6 +32,7 @@ const survey = () => {
         );
         setQuestions(data.forms[0].pages[1].sections[0].questions);
         setPages(data.forms[0].pages);
+        console.log(data.forms[0].pages[1]);
       } catch (error) {
         console.log(error.response);
       }
@@ -43,11 +44,13 @@ const survey = () => {
       <div className={styles.container}>
         <Sidebar active="survey" />
         <div className={styles.main}>
-          <p>Survey</p>
           <div className={styles.form_prt}>
             <form onSubmit={e => e.preventDefault()}>
-              <SurveyInput />
-              <MultiSelect />
+              {pages.length &&
+                pages
+                  .find((p, i) => i === currentPage)
+                  .sections.map(s => s.questions.map(q => <SurveyInput />))}
+              {/* <MultiSelect /> */}
             </form>
 
             <div className={styles.navigation}>
@@ -58,6 +61,9 @@ const survey = () => {
                 <BsArrowLeft size={25} />
                 <p>prev</p>
               </div>
+              <span>
+                {currentPage + 1} / {pages.length}
+              </span>
               <div
                 onClick={() => setCurrentPage(c => c + 1)}
                 className={

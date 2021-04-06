@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "../../styles/survey.module.css";
 
+interface Props {
+  label: string;
+}
+
 const SurveyInput = () => {
   return (
     <div className={styles.input}>
