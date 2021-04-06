@@ -12,7 +12,7 @@ export interface SetCurrentUser {
 
 const withAuth = (WrappedComponent: React.FC) => {
   const Component = (props: any) => {
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const dispatch = useDispatch();
     useEffect(() => {
       const userAuthenticate = async () => {
