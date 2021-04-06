@@ -7,7 +7,11 @@ const Spinner = () => {
   return (
     <div className={styles.container}>
       <Sidebar
-        active={Router.route.includes("profile") ? "profile" : "survey"}
+        active={
+          typeof window !== "undefined" && Router.route.includes("profile")
+            ? "profile"
+            : "survey"
+        }
       />
       <div className={styles.main}>
         <div className="lds-facebook">

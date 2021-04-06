@@ -3,6 +3,7 @@ import Layout from "../components/layout/Layout";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
 import styles from "../styles/authenticate.module.css";
+import withoutAuth from "../HOCs/withoutAuth";
 
 export interface ToggleAuthenticate {
   type: "ToggleAuth";
@@ -20,4 +21,4 @@ const authenticate = () => {
   );
 };
 
-export default authenticate;
+export default withoutAuth(authenticate);
