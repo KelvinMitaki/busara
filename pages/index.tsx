@@ -32,7 +32,6 @@ const survey = () => {
         console.log(error.response);
       }
     };
-    getCurrUser();
   }, []);
   return (
     <Layout title="Survey">
@@ -40,7 +39,15 @@ const survey = () => {
         <Sidebar active="survey" />
         <div className={styles.main}>
           <p>Survey</p>
-          {html.length
+          <div className={styles.form_prt}>
+            <form onSubmit={e => e.preventDefault()}></form>
+
+            <div className={styles.navigation}>
+              <button>prev</button>
+              <button>next</button>
+            </div>
+          </div>
+          {/* {html.length
             ? html.map(h => (
                 <div dangerouslySetInnerHTML={{ __html: h }} key={h}></div>
               ))
@@ -50,7 +57,7 @@ const survey = () => {
               src={questions[0].uploads[0].file_url}
               style={{ height: "70%", width: "70%" }}
             />
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </Layout>
