@@ -30,7 +30,6 @@ const survey = () => {
         <Sidebar active="survey" />
         <div className={styles.main}>
           <p>Survey</p>
-          <Spinner />
         </div>
       </div>
     </Layout>

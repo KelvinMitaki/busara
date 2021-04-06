@@ -11,6 +11,7 @@ import { GiWorld } from "react-icons/gi";
 import Layout from "../components/layout/Layout";
 import Sidebar from "../components/layout/Sidebar";
 import styles from "../styles/profile.module.css";
+import withAuth from "../HOCs/withAuth";
 
 export interface User {
   id: string;
@@ -113,4 +114,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default withAuth(profile);

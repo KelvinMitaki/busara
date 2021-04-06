@@ -1,0 +1,13 @@
+.container {
+  font-size: 1.6rem;
+  display: flex;
+}
+.main {
+  padding: 4rem;
+  width: calc(100vw - 30rem);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+}
