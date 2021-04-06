@@ -6,7 +6,7 @@ import Sidebar from "../components/layout/Sidebar";
 import Spinner from "../components/layout/Spinner";
 import withAuth from "../HOCs/withAuth";
 import { wrapper } from "../redux";
-import styles from "../styles/survery.module.css";
+import styles from "../styles/survey.module.css";
 
 const survey = () => {
   useEffect(() => {

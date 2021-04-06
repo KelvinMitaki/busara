@@ -2,14 +2,15 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { AnyAction, combineReducers, createStore, Store } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { reducer as formReducer } from "redux-form";
-import storage from "redux-persist/lib/storage";
+import surveyReducer from "./reducers/surveyReducer";
 import authReducer from "./reducers/authReducer";
 import styleReducer from "./reducers/styleReducer";
 
 const combinedReducer = combineReducers({
-  style: styleReducer,
   form: formReducer,
-  auth: authReducer
+  style: styleReducer,
+  auth: authReducer,
+  survey: surveyReducer
 });
 const reducer = (state: any, action: AnyAction) => {
   if (action.type === HYDRATE) {
