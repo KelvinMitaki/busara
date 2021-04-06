@@ -38,7 +38,7 @@ const withoutAuth = (WrappedComponent: React.FC) => {
       };
       userAuthenticate();
     }, []);
-    if (loading || user) return <Spinner />;
+    if (loading || user) return <Spinner context="unauth" />;
     return <WrappedComponent {...props} />;
   };
   return Component;

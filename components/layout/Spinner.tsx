@@ -3,17 +3,26 @@ import Router from "next/router";
 import styles from "../../styles/spinner.module.css";
 import Sidebar from "./Sidebar";
 
-const Spinner = () => {
+interface Props {
+  context: "auth" | "unauth";
+}
+
+const Spinner: React.FC<Props> = ({ context }) => {
   return (
     <div className={styles.container}>
-      <Sidebar
-        active={
-          typeof window !== "undefined" && Router.route.includes("profile")
-            ? "profile"
-            : "survey"
-        }
-      />
-      <div className={styles.main}>
+      {context === "auth" && (
+        <Sidebar
+          active={
+            typeof window !== "undefined" && Router.route.includes("profile")
+              ? "profile"
+              : "survey"
+          }
+        />
+      )}
+      <div
+        className={styles.main}
+        style={{ ...(context === "unauth" && { width: "100%" }) }}
+      >
         <div className="lds-facebook">
           <div></div>
           <div></div>

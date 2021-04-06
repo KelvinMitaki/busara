@@ -36,7 +36,7 @@ const withAuth = (WrappedComponent: React.FC) => {
       };
       userAuthenticate();
     }, []);
-    if (loading) return <Spinner />;
+    if (loading) return <Spinner context="auth" />;
     return <WrappedComponent {...props} />;
   };
   return Component;
