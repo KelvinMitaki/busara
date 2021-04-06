@@ -39,9 +39,13 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  transform: scale(1);
 }
 .navigation p {
   margin: 0;
+}
+.hide_btn {
+  transform: scale(0) !important;
 }
 .navigation div:hover {
   cursor: pointer;

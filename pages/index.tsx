@@ -5,13 +5,15 @@ import Layout from "../components/layout/Layout";
 import Sidebar from "../components/layout/Sidebar";
 import Spinner from "../components/layout/Spinner";
 import withAuth from "../HOCs/withAuth";
-import { Survey } from "../interfaces/Data";
+import { Page, Survey } from "../interfaces/Data";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import styles from "../styles/survey.module.css";
 
 const survey = () => {
   const [html, setHtml] = useState<string[]>([]);
   const [questions, setQuestions] = useState<Survey[]>([]);
+  const [pages, setPages] = useState<Page[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(0);
   useEffect(() => {
     const getCurrUser = async () => {
       try {
@@ -27,11 +29,12 @@ const survey = () => {
           )
         );
         setQuestions(data.forms[0].pages[1].sections[0].questions);
-        console.log(data.forms[0].pages[1]);
+        setPages(data.forms[0].pages);
       } catch (error) {
         console.log(error.response);
       }
     };
+    getCurrUser();
   }, []);
   return (
     <Layout title="Survey">
@@ -43,11 +46,19 @@ const survey = () => {
             <form onSubmit={e => e.preventDefault()}></form>
 
             <div className={styles.navigation}>
-              <div>
+              <div
+                onClick={() => setCurrentPage(c => c - 1)}
+                className={currentPage === 0 ? styles.hide_btn : ""}
+              >
                 <BsArrowLeft size={25} />
                 <p>prev</p>
               </div>
-              <div>
+              <div
+                onClick={() => setCurrentPage(c => c + 1)}
+                className={
+                  currentPage === pages.length - 1 ? styles.hide_btn : ""
+                }
+              >
                 <p>next</p>
                 <BsArrowRight size={25} />
               </div>
