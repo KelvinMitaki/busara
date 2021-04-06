@@ -6,7 +6,7 @@ import Sidebar from "../components/layout/Sidebar";
 import Spinner from "../components/layout/Spinner";
 import withAuth from "../HOCs/withAuth";
 import { Survey } from "../interfaces/Data";
-import { wrapper } from "../redux";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import styles from "../styles/survey.module.css";
 
 const survey = () => {
@@ -43,8 +43,14 @@ const survey = () => {
             <form onSubmit={e => e.preventDefault()}></form>
 
             <div className={styles.navigation}>
-              <button>prev</button>
-              <button>next</button>
+              <div>
+                <BsArrowLeft size={25} />
+                <p>prev</p>
+              </div>
+              <div>
+                <p>next</p>
+                <BsArrowRight size={25} />
+              </div>
             </div>
           </div>
           {/* {html.length
