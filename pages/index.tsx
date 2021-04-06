@@ -43,8 +43,39 @@ export interface Survey {
   widget: string;
 }
 
+interface Section {
+  can_make_payments: false;
+  created: string;
+  depth: number;
+  description: string;
+  gateway: null | string;
+  has_consent: false;
+  id: number;
+  is_active: true;
+  is_primary: false;
+  is_special: false;
+  modified: string;
+  name: string;
+  node_type: string;
+  numchild: number;
+  path: string;
+  questions: Survey[];
+  show_description: false;
+  sort_order: number;
+  status: string;
+  survey_airtime_compensation: number;
+  survey_cash_compensation: number;
+  survey_estimated_time: number;
+  type: string;
+  universe: null | string;
+  valid_from: string;
+  valid_to: string;
+  visibility: string;
+}
+
 const survey = () => {
   const [html, setHtml] = useState<string[]>([]);
+  const [questions, setQuestions] = useState<Survey[]>([]);
   useEffect(() => {
     const getCurrUser = async () => {
       try {
@@ -54,8 +85,12 @@ const survey = () => {
           }
         });
 
-        setHtml(data.forms[0].pages[1].sections[0].questions.map(q => q.text));
-        console.log(data.forms[0].pages[1].sections[0].questions);
+        setHtml(
+          (data.forms[0].pages[1].sections[0].questions as Survey[]).map(
+            q => q.text
+          )
+        );
+        setQuestions(data.forms[0].pages[1].sections[0].questions);
       } catch (error) {
         console.log(error.response);
       }
@@ -73,6 +108,12 @@ const survey = () => {
                 <div dangerouslySetInnerHTML={{ __html: h }} key={h}></div>
               ))
             : null}
+          {questions.length ? (
+            <img
+              src={questions[0].uploads[0].file_url}
+              style={{ height: "70%", width: "70%" }}
+            />
+          ) : null}
         </div>
       </div>
     </Layout>
