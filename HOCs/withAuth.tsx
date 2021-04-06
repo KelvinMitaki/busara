@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Router from "next/router";
 import { User } from "../pages/profile";
 import { useDispatch } from "react-redux";
 import axios from "../axiosConfig/axios";
+import Spinner from "../components/layout/Spinner";
 
 export interface SetCurrentUser {
   type: "setCurrentUser";
@@ -10,7 +11,8 @@ export interface SetCurrentUser {
 }
 
 const withAuth = (WrappedComponent: React.FC) => {
-  const Component = async (props: any) => {
+  const Component = (props: any) => {
+    const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useDispatch();
     useEffect(() => {
       const userAuthenticate = async () => {
@@ -20,11 +22,13 @@ const withAuth = (WrappedComponent: React.FC) => {
           return;
         }
         try {
+          setLoading(true);
           const { data } = await axios.get("/users/current-user", {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`
             }
           });
+          setLoading(false);
           dispatch<SetCurrentUser>({ type: "setCurrentUser", payload: data });
         } catch (error) {
           Router.replace("/authenticate");
@@ -32,9 +36,9 @@ const withAuth = (WrappedComponent: React.FC) => {
       };
       userAuthenticate();
     }, []);
+    if (loading) return <Spinner />;
     return <WrappedComponent {...props} />;
   };
-
   return Component;
 };
 
