@@ -33,6 +33,7 @@ const withoutAuth = (WrappedComponent: React.FC) => {
           dispatch<SetCurrentUser>({ type: "setCurrentUser", payload: data });
           Router.replace("/");
         } catch (error) {
+          setLoading(false);
           return;
         }
       };
