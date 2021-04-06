@@ -12,6 +12,8 @@ import Layout from "../components/layout/Layout";
 import Sidebar from "../components/layout/Sidebar";
 import styles from "../styles/profile.module.css";
 import withAuth from "../HOCs/withAuth";
+import { useSelector } from "react-redux";
+import { Redux } from "../interfaces/Redux";
 
 export interface User {
   id: string;
@@ -33,10 +35,23 @@ export interface User {
   project: null;
   approver_level: string;
   universe_name: string;
-  sujbect: string;
+  subject: string;
 }
 
 const profile = () => {
+  const {
+    currentUser: {
+      approver_level,
+      phone_number,
+      email,
+      name,
+      id,
+      universe_name,
+      language,
+      user_timezone,
+      subject
+    }
+  } = useSelector((state: Redux) => state.auth);
   return (
     <Layout title="Profile">
       <div className={styles.container}>
@@ -45,21 +60,26 @@ const profile = () => {
           <div className={styles.property}>
             <label>id</label>
             <div>
-              <input readOnly type="text" value="2169712987632869812708" />
+              <input readOnly type="text" value={id} />
               <AiOutlineNumber size={25} />
             </div>
           </div>
           <div className={styles.property}>
             <label>full name</label>
             <div>
-              <input readOnly type="text" value="Kelvin Mitaki" />
+              <input
+                readOnly
+                type="text"
+                value={name}
+                style={{ textTransform: "capitalize" }}
+              />
               <FaUserAlt size={25} />
             </div>
           </div>
           <div className={styles.property}>
             <label>email</label>
             <div>
-              <input readOnly type="text" value="mitakikelvin1@gmail.com" />
+              <input readOnly type="text" value={email} />
               <MdEmail size={25} />
             </div>
           </div>
@@ -67,21 +87,21 @@ const profile = () => {
           <div className={styles.property}>
             <label>phone number</label>
             <div>
-              <input readOnly type="text" value="+254721559392" />
+              <input readOnly type="text" value={phone_number} />
               <MdPhoneAndroid size={25} />
             </div>
           </div>
           <div className={styles.property}>
             <label>language</label>
             <div>
-              <input readOnly type="text" value="English" />
+              <input readOnly type="text" value={language} />
               <IoLanguage size={25} />
             </div>
           </div>
           <div className={styles.property}>
             <label>timezone</label>
             <div>
-              <input readOnly type="text" value="Africa/Nairobi" />
+              <input readOnly type="text" value={user_timezone} />
               <AiFillCompass size={25} />
             </div>
           </div>
@@ -89,21 +109,21 @@ const profile = () => {
           <div className={styles.property}>
             <label>approver level</label>
             <div>
-              <input readOnly type="text" value="Initiator" />
+              <input readOnly type="text" value={approver_level} />
               <AiFillTrademarkCircle size={25} />
             </div>
           </div>
           <div className={styles.property}>
             <label>subject</label>
             <div>
-              <input readOnly type="text" value="9279871298863879127" />
+              <input readOnly type="text" value={subject} />
               <MdSubject size={25} />
             </div>
           </div>
           <div className={styles.property}>
             <label>universe</label>
             <div>
-              <input readOnly type="text" value="1" />
+              <input readOnly type="text" value={universe_name} />
               <GiWorld size={25} />
             </div>
           </div>
