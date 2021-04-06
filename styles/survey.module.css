@@ -19,6 +19,9 @@
   justify-content: space-between;
   margin: 0% auto;
 }
+.form_prt form {
+  width: 100%;
+}
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -52,6 +55,24 @@
   opacity: 0.8;
 }
 
+.input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.input input {
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--primary-color-light);
+  background-color: var(--secondary-color);
+  border-bottom: 2px solid var(--primary-color-light);
+}
+.input label {
+  font-size: 1.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0;
+}
 @media only screen and (max-width: 767px) {
   .main {
     margin-top: 10rem;

@@ -8,6 +8,7 @@ import withAuth from "../HOCs/withAuth";
 import { Page, Survey } from "../interfaces/Data";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import styles from "../styles/survey.module.css";
+import SurveyInput from "../components/reduxForm/SurveyInput";
 
 const survey = () => {
   const [html, setHtml] = useState<string[]>([]);
@@ -43,7 +44,9 @@ const survey = () => {
         <div className={styles.main}>
           <p>Survey</p>
           <div className={styles.form_prt}>
-            <form onSubmit={e => e.preventDefault()}></form>
+            <form onSubmit={e => e.preventDefault()}>
+              <SurveyInput />
+            </form>
 
             <div className={styles.navigation}>
               <div
