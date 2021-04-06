@@ -9,6 +9,7 @@ import { Page, Survey } from "../interfaces/Data";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import styles from "../styles/survey.module.css";
 import SurveyInput from "../components/reduxForm/SurveyInput";
+import MultiSelect from "../components/reduxForm/MultiSelect";
 
 const survey = () => {
   const [html, setHtml] = useState<string[]>([]);
@@ -46,6 +47,7 @@ const survey = () => {
           <div className={styles.form_prt}>
             <form onSubmit={e => e.preventDefault()}>
               <SurveyInput />
+              <MultiSelect />
             </form>
 
             <div className={styles.navigation}>

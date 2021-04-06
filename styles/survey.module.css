@@ -55,23 +55,37 @@
   opacity: 0.8;
 }
 
-.input {
+.input,
+.select {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 5rem;
 }
-.input input {
+.input input,
+.select input {
   box-shadow: none;
   border-radius: 0;
   color: var(--primary-color-light);
   background-color: var(--secondary-color);
   border-bottom: 2px solid var(--primary-color-light);
 }
-.input label {
+.input label,
+.select label {
   font-size: 1.9rem;
   font-weight: 600;
   text-transform: capitalize;
   margin: 0;
+}
+.FiChevronDown {
+  border-bottom: 2px solid var(--primary-color-light);
+  width: 5%;
+}
+.select_core {
+  display: flex;
+}
+.select_core input {
+  width: 95%;
 }
 @media only screen and (max-width: 767px) {
   .main {
