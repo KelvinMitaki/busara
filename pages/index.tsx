@@ -58,6 +58,7 @@ const survey = () => {
                             dropdown_options={q.q_options}
                             select_type={q.widget}
                             text={q.text}
+                            key={q.id}
                           />
                         );
                       }
@@ -66,6 +67,7 @@ const survey = () => {
                           <SurveyImage
                             image={q.uploads[0].file_url}
                             text={q.text}
+                            key={q.id}
                           />
                         );
                       }
