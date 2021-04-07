@@ -53,7 +53,7 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
 
             setLoading(false);
             dispatch(reset("Login"));
-            Router.replace("/");
+            Router.replace("/profile");
           } catch (error) {
             console.log(error.response);
             if (
