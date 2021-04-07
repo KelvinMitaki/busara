@@ -5,8 +5,9 @@ import Layout from "../components/layout/Layout";
 import Sidebar from "../components/layout/Sidebar";
 import Spinner from "../components/layout/Spinner";
 import withAuth from "../HOCs/withAuth";
-import { Page, Survey } from "../interfaces/Data";
+import { Page } from "../interfaces/Data";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { IoIosSend } from "react-icons/io";
 import styles from "../styles/survey.module.css";
 import SurveyInput from "../components/reduxForm/SurveyInput";
 import MultiSelect from "../components/reduxForm/MultiSelect";
@@ -90,15 +91,17 @@ const survey = () => {
                 <span>
                   {currentPage + 1} / {pages.length}
                 </span>
-                <div
-                  onClick={() => setCurrentPage(c => c + 1)}
-                  className={
-                    currentPage === pages.length - 1 ? styles.hide_btn : ""
-                  }
-                >
-                  <p>next</p>
-                  <BsArrowRight size={25} />
-                </div>
+                {currentPage + 1 === pages.length ? (
+                  <div>
+                    <p>submit</p>
+                    <IoIosSend size={25} />
+                  </div>
+                ) : (
+                  <div onClick={() => setCurrentPage(c => c + 1)}>
+                    <p>next</p>
+                    <BsArrowRight size={25} />
+                  </div>
+                )}
               </div>
             ) : null}
           </div>
