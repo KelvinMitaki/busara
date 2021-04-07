@@ -62,10 +62,12 @@ const survey = () => {
                         );
                       }
                       if (q.widget === "article-image") {
-                        <SurveyImage
-                          image={q.uploads[0].file_url}
-                          text={q.text}
-                        />;
+                        return (
+                          <SurveyImage
+                            image={q.uploads[0].file_url}
+                            text={q.text}
+                          />
+                        );
                       }
                       return null;
                     })

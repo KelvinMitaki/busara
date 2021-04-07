@@ -3,12 +3,14 @@
   font-size: 1.6rem;
   background-color: var(--secondary-color);
   color: var(--dull-white);
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 .main {
   padding: 4rem;
   width: calc(100vw - 30rem);
+  overflow-y: auto;
 }
 .form_prt {
   width: 80%;
@@ -140,7 +142,14 @@
 .dropdown p {
   margin: 0%;
 }
-
+.survey_image div {
+  height: 20rem;
+  width: 100%;
+  border: 1px solid var(--primary-color-light);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 @media only screen and (max-width: 767px) {
   .main {
     margin-top: 10rem;
