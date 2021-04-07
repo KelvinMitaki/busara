@@ -131,9 +131,11 @@
   height: 4rem;
   transition: all 0.2s;
 }
-.dropdown > *:hover {
+.dropdown > *:hover,
+.selected {
   background-color: var(--secondary-color);
   color: var(--dull-white);
+  margin: 1px 0;
 }
 .dropdown p {
   margin: 0%;

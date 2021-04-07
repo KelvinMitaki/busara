@@ -15,6 +15,9 @@ const MultiSelect: React.FC<Props> = ({
   text
 }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [selectedOptions, setSelectedOptions] = useState<
+    typeof dropdown_options
+  >([]);
   const openRef = useRef<HTMLDivElement>();
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
@@ -26,6 +29,17 @@ const MultiSelect: React.FC<Props> = ({
     // @ts-ignore
     if (openRef.current && !openRef.current.contains(e.target)) {
       setOpen(false);
+    }
+  };
+  const handleSelect = (optn: typeof dropdown_options[0]) => {
+    if (select_type === "multiselect") {
+      setSelectedOptions(o => {
+        const itemExist = o.find(i => i.id === optn.id);
+        if (itemExist) {
+          return o.filter(i => i.id !== optn.id);
+        }
+        return [...o, optn];
+      });
     }
   };
   return (
@@ -42,7 +56,11 @@ const MultiSelect: React.FC<Props> = ({
         <input
           type="text"
           id="select"
-          value={dropdown_options[0].name}
+          value={
+            selectedOptions.length
+              ? selectedOptions.map(o => o.name)
+              : dropdown_options[0].name
+          }
           disabled
         />
         <div
@@ -56,7 +74,15 @@ const MultiSelect: React.FC<Props> = ({
           className={`${styles.dropdown} ${open ? styles.dropdown__show : ""}`}
         >
           {dropdown_options.map(o => (
-            <div key={o.id}>
+            <div
+              key={o.id}
+              onClick={() => handleSelect(o)}
+              className={
+                selectedOptions.some(op => op.id === o.id)
+                  ? styles.selected
+                  : ""
+              }
+            >
               <p>{o.name}</p>
             </div>
           ))}
