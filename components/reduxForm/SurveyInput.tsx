@@ -5,10 +5,13 @@ interface Props {
   label: string;
 }
 
-const SurveyInput = () => {
+const SurveyInput: React.FC<Props> = ({ label }) => {
   return (
     <div className={styles.input}>
-      <label htmlFor="survery_inp">test</label>
+      <label
+        htmlFor="survery_inp"
+        dangerouslySetInnerHTML={{ __html: label }}
+      ></label>
       <input type="text" id="survery_inp" />
     </div>
   );

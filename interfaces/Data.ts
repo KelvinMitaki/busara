@@ -88,5 +88,5 @@ export interface Survey {
     id: number;
   }[];
   validation_rule: string;
-  widget: string;
+  widget: "article-image" | "multiselect" | "text" | "tel" | "select";
 }

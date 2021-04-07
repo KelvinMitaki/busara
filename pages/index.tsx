@@ -32,7 +32,7 @@ const survey = () => {
         );
         setQuestions(data.forms[0].pages[1].sections[0].questions);
         setPages(data.forms[0].pages);
-        console.log(data.forms[0].pages[1]);
+        console.log(data.forms[0].pages[0]);
       } catch (error) {
         console.log(error.response);
       }
@@ -49,8 +49,24 @@ const survey = () => {
               {pages.length &&
                 pages
                   .find((p, i) => i === currentPage)
-                  .sections.map(s => s.questions.map(q => <SurveyInput />))}
-              {/* <MultiSelect /> */}
+                  .sections.map(s =>
+                    s.questions.map(q => {
+                      if (q.widget === "text" || q.widget === "tel") {
+                        return (
+                          <SurveyInput
+                            label={q.text}
+                            key={q.id}
+                            type={q.type === "tel" ? "text" : "number"}
+                          />
+                        );
+                      }
+                      // if(q.widget==="multiselect"||q.widget==="select"){
+
+                      //   <MultiSelect />
+                      // }
+                      return null;
+                    })
+                  )}
             </form>
 
             <div className={styles.navigation}>
