@@ -18,6 +18,9 @@ const MultiSelect: React.FC<Props> = ({
   const [selectedOptions, setSelectedOptions] = useState<
     typeof dropdown_options
   >([]);
+  const [singleOption, setSingleOption] = useState<typeof dropdown_options[0]>(
+    dropdown_options[0]
+  );
   const openRef = useRef<HTMLDivElement>();
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
@@ -41,6 +44,31 @@ const MultiSelect: React.FC<Props> = ({
         return [...o, optn];
       });
     }
+    if (select_type === "select") {
+      setSingleOption(optn);
+    }
+  };
+  const setInputValue = (): string | string[] => {
+    if (select_type === "multiselect") {
+      if (selectedOptions.length) {
+        return selectedOptions.map(o => o.name);
+      }
+      return dropdown_options[0].name;
+    }
+    return singleOption.name;
+  };
+  const setSelectedClassName = (o: typeof dropdown_options[0]): string => {
+    if (select_type === "multiselect") {
+      const isSelected = selectedOptions.some(op => op.id === o.id);
+      if (isSelected) {
+        return styles.selected;
+      }
+      return "";
+    }
+    if (singleOption.id === o.id) {
+      return styles.selected;
+    }
+    return "";
   };
   return (
     <div className={styles.select}>
@@ -53,16 +81,7 @@ const MultiSelect: React.FC<Props> = ({
         ref={openRef}
         className={styles.select_core}
       >
-        <input
-          type="text"
-          id="select"
-          value={
-            selectedOptions.length
-              ? selectedOptions.map(o => o.name)
-              : dropdown_options[0].name
-          }
-          disabled
-        />
+        <input type="text" id="select" value={setInputValue()} disabled />
         <div
           className={`${styles.FiChevronDown} ${
             open ? styles.FiChevronDown__open : ""
@@ -77,11 +96,7 @@ const MultiSelect: React.FC<Props> = ({
             <div
               key={o.id}
               onClick={() => handleSelect(o)}
-              className={
-                selectedOptions.some(op => op.id === o.id)
-                  ? styles.selected
-                  : ""
-              }
+              className={setSelectedClassName(o)}
             >
               <p>{o.name}</p>
             </div>
