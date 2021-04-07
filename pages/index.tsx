@@ -12,8 +12,6 @@ import SurveyInput from "../components/reduxForm/SurveyInput";
 import MultiSelect from "../components/reduxForm/MultiSelect";
 
 const survey = () => {
-  const [html, setHtml] = useState<string[]>([]);
-  const [questions, setQuestions] = useState<Survey[]>([]);
   const [pages, setPages] = useState<Page[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
   useEffect(() => {
@@ -24,13 +22,6 @@ const survey = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         });
-
-        setHtml(
-          (data.forms[0].pages[1].sections[0].questions as Survey[]).map(
-            q => q.text
-          )
-        );
-        setQuestions(data.forms[0].pages[1].sections[0].questions);
         setPages(data.forms[0].pages);
         console.log(data.forms[0].pages[1]);
       } catch (error) {
@@ -96,17 +87,6 @@ const survey = () => {
               </div>
             </div>
           </div>
-          {/* {html.length
-            ? html.map(h => (
-                <div dangerouslySetInnerHTML={{ __html: h }} key={h}></div>
-              ))
-            : null}
-          {questions.length ? (
-            <img
-              src={questions[0].uploads[0].file_url}
-              style={{ height: "70%", width: "70%" }}
-            />
-          ) : null} */}
         </div>
       </div>
     </Layout>
