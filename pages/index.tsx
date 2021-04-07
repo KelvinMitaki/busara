@@ -12,6 +12,7 @@ import styles from "../styles/survey.module.css";
 import SurveyInput from "../components/reduxForm/SurveyInput";
 import MultiSelect from "../components/reduxForm/MultiSelect";
 import SurveyImage from "../components/reduxForm/SurveyImage";
+import Survey from "../components/survey/Survey";
 
 const survey = () => {
   const [pages, setPages] = useState<Page[]>([]);
@@ -38,72 +39,11 @@ const survey = () => {
         <Sidebar active="survey" />
         <div className={styles.main}>
           <div className={styles.form_prt}>
-            <form onSubmit={e => e.preventDefault()}>
-              {pages.length ? (
-                pages
-                  .find((p, i) => i === currentPage)
-                  .sections.map(s =>
-                    s.questions.map(q => {
-                      if (q.widget === "text" || q.widget === "tel") {
-                        return (
-                          <SurveyInput
-                            label={q.text}
-                            key={q.id}
-                            type={q.type !== "tel" ? "text" : "number"}
-                          />
-                        );
-                      }
-                      if (q.widget === "multiselect" || q.widget === "select") {
-                        return (
-                          <MultiSelect
-                            dropdown_options={q.q_options}
-                            select_type={q.widget}
-                            text={q.text}
-                            key={q.id}
-                          />
-                        );
-                      }
-                      if (q.widget === "article-image") {
-                        return (
-                          <SurveyImage
-                            image={q.uploads[0].file_url}
-                            text={q.text}
-                            key={q.id}
-                          />
-                        );
-                      }
-                      return null;
-                    })
-                  )
-              ) : (
-                <Spinner context="unauth" embeddedInComponent />
-              )}
-            </form>
-            {pages.length ? (
-              <div className={styles.navigation}>
-                <div
-                  onClick={() => setCurrentPage(c => c - 1)}
-                  className={currentPage === 0 ? styles.hide_btn : ""}
-                >
-                  <BsArrowLeft size={25} />
-                  <p>prev</p>
-                </div>
-                <span>
-                  {currentPage + 1} / {pages.length}
-                </span>
-                {currentPage + 1 === pages.length ? (
-                  <div>
-                    <p>submit</p>
-                    <IoIosSend size={25} />
-                  </div>
-                ) : (
-                  <div onClick={() => setCurrentPage(c => c + 1)}>
-                    <p>next</p>
-                    <BsArrowRight size={25} />
-                  </div>
-                )}
-              </div>
-            ) : null}
+            <Survey
+              pages={pages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
         </div>
       </div>
