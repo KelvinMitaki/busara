@@ -76,6 +76,10 @@
   background-color: var(--secondary-color);
   border-bottom: 2px solid var(--primary-color-light);
 }
+.input input::-webkit-inner-spin-button,
+.select input::-webkit-outer-spin-button {
+  appearance: none;
+}
 .input label,
 .select label {
   font-size: 1.9rem;

@@ -56,7 +56,7 @@ const survey = () => {
                           <SurveyInput
                             label={q.text}
                             key={q.id}
-                            type={q.type === "tel" ? "text" : "number"}
+                            type={q.type !== "tel" ? "text" : "number"}
                           />
                         );
                       }

@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import styles from "../../styles/survey.module.css";
 
+interface Props {
+  dropdown_options: string[];
+}
+
 const MultiSelect = () => {
   const [open, setOpen] = useState<boolean>(false);
   const openRef = useRef<HTMLDivElement>();
