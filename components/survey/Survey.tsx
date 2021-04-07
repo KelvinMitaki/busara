@@ -18,12 +18,13 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
   return (
     <React.Fragment>
       <form onSubmit={e => e.preventDefault()}>
+        <h1>* is required</h1>
         {pages.length ? (
           pages
             .find((p, i) => i === currentPage)
             .sections.map(s => (
               <React.Fragment key={s.id}>
-                <h1>{s.description}</h1>
+                <h2>{s.description}</h2>
                 {s.questions.map(q => {
                   if (q.widget === "text" || q.widget === "tel") {
                     return (
@@ -31,6 +32,7 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
                         label={q.text}
                         key={q.id}
                         type={q.type !== "tel" ? "text" : "number"}
+                        required={q.is_mandatory}
                       />
                     );
                   }
@@ -41,6 +43,7 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
                         select_type={q.widget}
                         text={q.text}
                         key={q.id}
+                        required={q.is_mandatory}
                       />
                     );
                   }
@@ -50,6 +53,7 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
                         image={q.uploads[0].file_url}
                         text={q.text}
                         key={q.id}
+                        required={q.is_mandatory}
                       />
                     );
                   }

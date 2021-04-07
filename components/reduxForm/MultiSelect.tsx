@@ -7,12 +7,14 @@ interface Props {
   dropdown_options: Survey["q_options"];
   select_type: "select" | "multiselect";
   text: string;
+  required: boolean;
 }
 
 const MultiSelect: React.FC<Props> = ({
   dropdown_options,
   select_type,
-  text
+  text,
+  required
 }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedOptions, setSelectedOptions] = useState<
@@ -74,8 +76,10 @@ const MultiSelect: React.FC<Props> = ({
     <div className={styles.select}>
       <label
         htmlFor="select"
-        dangerouslySetInnerHTML={{ __html: text }}
-      ></label>
+        dangerouslySetInnerHTML={{
+          __html: `<div>${text}</div> ${required ? `<span>*</span>` : ""}`
+        }}
+      />
       <div
         onClick={() => setOpen(true)}
         ref={openRef}

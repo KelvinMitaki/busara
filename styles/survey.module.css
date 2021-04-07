@@ -12,6 +12,13 @@
   width: calc(100vw - 30rem);
   overflow-y: auto;
 }
+.main h1 {
+  text-transform: uppercase;
+  color: var(--primary-color-light);
+}
+.main h2 {
+  text-transform: capitalize;
+}
 .form_prt {
   width: 80%;
   min-height: 80vh;
@@ -23,6 +30,17 @@
 }
 .form_prt form {
   width: 100%;
+}
+
+.form_prt label {
+  display: flex;
+}
+.form_prt font {
+  margin-right: 0.5rem;
+}
+.form_prt span {
+  color: var(--primary-color-light);
+  margin-top: 0.5rem;
 }
 .navigation {
   display: flex;
@@ -142,7 +160,7 @@
 .dropdown p {
   margin: 0%;
 }
-.survey_image div {
+.img {
   height: 20rem;
   width: 100%;
   border: 1px solid var(--primary-color-light);
