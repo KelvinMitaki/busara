@@ -120,6 +120,7 @@
   color: var(--secondary-color);
   font-weight: 600;
   transition: all 0.2s;
+  z-index: 1;
 }
 .dropdown__show.dropdown {
   max-height: 40vh;

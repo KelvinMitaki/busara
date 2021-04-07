@@ -32,7 +32,7 @@ const survey = () => {
         );
         setQuestions(data.forms[0].pages[1].sections[0].questions);
         setPages(data.forms[0].pages);
-        console.log(data.forms[0].pages[0]);
+        console.log(data.forms[0].pages[1]);
       } catch (error) {
         console.log(error.response);
       }
@@ -60,10 +60,15 @@ const survey = () => {
                           />
                         );
                       }
-                      // if(q.widget==="multiselect"||q.widget==="select"){
-
-                      //   <MultiSelect />
-                      // }
+                      if (q.widget === "multiselect" || q.widget === "select") {
+                        return (
+                          <MultiSelect
+                            dropdown_options={q.q_options}
+                            select_type={q.widget}
+                            text={q.text}
+                          />
+                        );
+                      }
                       return null;
                     })
                   )}

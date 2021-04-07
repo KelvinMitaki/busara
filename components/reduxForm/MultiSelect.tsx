@@ -1,12 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
+import { Survey } from "../../interfaces/Data";
 import styles from "../../styles/survey.module.css";
 
 interface Props {
-  dropdown_options: string[];
+  dropdown_options: Survey["q_options"];
+  select_type: "select" | "multiselect";
+  text: string;
 }
 
-const MultiSelect = () => {
+const MultiSelect: React.FC<Props> = ({
+  dropdown_options,
+  select_type,
+  text
+}) => {
   const [open, setOpen] = useState<boolean>(false);
   const openRef = useRef<HTMLDivElement>();
   useEffect(() => {
@@ -23,13 +30,21 @@ const MultiSelect = () => {
   };
   return (
     <div className={styles.select}>
-      <label htmlFor="select">select one option</label>
+      <label
+        htmlFor="select"
+        dangerouslySetInnerHTML={{ __html: text }}
+      ></label>
       <div
         onClick={() => setOpen(true)}
         ref={openRef}
         className={styles.select_core}
       >
-        <input type="text" id="select" value="Nairobi" disabled />
+        <input
+          type="text"
+          id="select"
+          value={dropdown_options[0].name}
+          disabled
+        />
         <div
           className={`${styles.FiChevronDown} ${
             open ? styles.FiChevronDown__open : ""
@@ -40,21 +55,11 @@ const MultiSelect = () => {
         <div
           className={`${styles.dropdown} ${open ? styles.dropdown__show : ""}`}
         >
-          <div>
-            <p>test 1</p>
-          </div>
-          <div>
-            <p>test 2</p>
-          </div>
-          <div>
-            <p>test 3</p>
-          </div>
-          <div>
-            <p>test 4</p>
-          </div>
-          <div>
-            <p>test 5</p>
-          </div>
+          {dropdown_options.map(o => (
+            <div key={o.id}>
+              <p>{o.name}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
