@@ -1,17 +1,10 @@
-import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import axios from "../axiosConfig/axios";
 import Layout from "../components/layout/Layout";
 import Sidebar from "../components/layout/Sidebar";
-import Spinner from "../components/layout/Spinner";
 import withAuth from "../HOCs/withAuth";
 import { Page } from "../interfaces/Data";
-import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { IoIosSend } from "react-icons/io";
 import styles from "../styles/survey.module.css";
-import SurveyInput from "../components/reduxForm/SurveyInput";
-import MultiSelect from "../components/reduxForm/MultiSelect";
-import SurveyImage from "../components/reduxForm/SurveyImage";
 import Survey from "../components/survey/Survey";
 
 const survey = () => {
