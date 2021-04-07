@@ -10,6 +10,7 @@ import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import styles from "../styles/survey.module.css";
 import SurveyInput from "../components/reduxForm/SurveyInput";
 import MultiSelect from "../components/reduxForm/MultiSelect";
+import SurveyImage from "../components/reduxForm/SurveyImage";
 
 const survey = () => {
   const [pages, setPages] = useState<Page[]>([]);
@@ -59,6 +60,12 @@ const survey = () => {
                             text={q.text}
                           />
                         );
+                      }
+                      if (q.widget === "article-image") {
+                        <SurveyImage
+                          image={q.uploads[0].file_url}
+                          text={q.text}
+                        />;
                       }
                       return null;
                     })
