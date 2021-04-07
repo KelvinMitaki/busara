@@ -38,7 +38,7 @@ const survey = () => {
         <div className={styles.main}>
           <div className={styles.form_prt}>
             <form onSubmit={e => e.preventDefault()}>
-              {pages.length &&
+              {pages.length ? (
                 pages
                   .find((p, i) => i === currentPage)
                   .sections.map(s =>
@@ -71,30 +71,34 @@ const survey = () => {
                       }
                       return null;
                     })
-                  )}
+                  )
+              ) : (
+                <Spinner context="unauth" embeddedInComponent />
+              )}
             </form>
-
-            <div className={styles.navigation}>
-              <div
-                onClick={() => setCurrentPage(c => c - 1)}
-                className={currentPage === 0 ? styles.hide_btn : ""}
-              >
-                <BsArrowLeft size={25} />
-                <p>prev</p>
+            {pages.length ? (
+              <div className={styles.navigation}>
+                <div
+                  onClick={() => setCurrentPage(c => c - 1)}
+                  className={currentPage === 0 ? styles.hide_btn : ""}
+                >
+                  <BsArrowLeft size={25} />
+                  <p>prev</p>
+                </div>
+                <span>
+                  {currentPage + 1} / {pages.length}
+                </span>
+                <div
+                  onClick={() => setCurrentPage(c => c + 1)}
+                  className={
+                    currentPage === pages.length - 1 ? styles.hide_btn : ""
+                  }
+                >
+                  <p>next</p>
+                  <BsArrowRight size={25} />
+                </div>
               </div>
-              <span>
-                {currentPage + 1} / {pages.length}
-              </span>
-              <div
-                onClick={() => setCurrentPage(c => c + 1)}
-                className={
-                  currentPage === pages.length - 1 ? styles.hide_btn : ""
-                }
-              >
-                <p>next</p>
-                <BsArrowRight size={25} />
-              </div>
-            </div>
+            ) : null}
           </div>
         </div>
       </div>

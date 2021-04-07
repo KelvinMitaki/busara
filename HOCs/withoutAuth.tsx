@@ -19,6 +19,7 @@ const withoutAuth = (WrappedComponent: React.FC) => {
       const userAuthenticate = async () => {
         const token = localStorage.getItem("token");
         if (!token) {
+          setLoading(false);
           return;
         }
         try {

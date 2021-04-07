@@ -5,11 +5,16 @@ import Sidebar from "./Sidebar";
 
 interface Props {
   context: "auth" | "unauth";
+  embeddedInComponent?: boolean;
 }
 
-const Spinner: React.FC<Props> = ({ context }) => {
+const Spinner: React.FC<Props> = ({ context, embeddedInComponent }) => {
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${
+        embeddedInComponent ? styles.auth__container : ""
+      }`}
+    >
       {context === "auth" && (
         <Sidebar
           active={

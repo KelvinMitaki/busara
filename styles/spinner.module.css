@@ -1,6 +1,12 @@
 .container {
   font-size: 1.6rem;
   display: flex;
+  width: 100vw;
+  position: fixed;
+  right: 0%;
+}
+.auth__container.container {
+  width: calc(100vw - 30rem);
 }
 .main {
   padding: 4rem;
@@ -13,6 +19,10 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .auth__container.container {
+    width: 97vw;
+    left: 0%;
+  }
   .main {
     width: 100%;
   }
