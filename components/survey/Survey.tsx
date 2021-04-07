@@ -21,39 +21,42 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
         {pages.length ? (
           pages
             .find((p, i) => i === currentPage)
-            .sections.map(s =>
-              s.questions.map(q => {
-                if (q.widget === "text" || q.widget === "tel") {
-                  return (
-                    <SurveyInput
-                      label={q.text}
-                      key={q.id}
-                      type={q.type !== "tel" ? "text" : "number"}
-                    />
-                  );
-                }
-                if (q.widget === "multiselect" || q.widget === "select") {
-                  return (
-                    <MultiSelect
-                      dropdown_options={q.q_options}
-                      select_type={q.widget}
-                      text={q.text}
-                      key={q.id}
-                    />
-                  );
-                }
-                if (q.widget === "article-image") {
-                  return (
-                    <SurveyImage
-                      image={q.uploads[0].file_url}
-                      text={q.text}
-                      key={q.id}
-                    />
-                  );
-                }
-                return null;
-              })
-            )
+            .sections.map(s => (
+              <React.Fragment key={s.id}>
+                <h1>{s.description}</h1>
+                {s.questions.map(q => {
+                  if (q.widget === "text" || q.widget === "tel") {
+                    return (
+                      <SurveyInput
+                        label={q.text}
+                        key={q.id}
+                        type={q.type !== "tel" ? "text" : "number"}
+                      />
+                    );
+                  }
+                  if (q.widget === "multiselect" || q.widget === "select") {
+                    return (
+                      <MultiSelect
+                        dropdown_options={q.q_options}
+                        select_type={q.widget}
+                        text={q.text}
+                        key={q.id}
+                      />
+                    );
+                  }
+                  if (q.widget === "article-image") {
+                    return (
+                      <SurveyImage
+                        image={q.uploads[0].file_url}
+                        text={q.text}
+                        key={q.id}
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </React.Fragment>
+            ))
         ) : (
           <Spinner context="unauth" embeddedInComponent />
         )}
