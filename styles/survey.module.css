@@ -171,6 +171,11 @@
   border: 1px solid var(--primary-color-light);
   max-width: 100%;
 }
+@media only screen and (max-height: 1024px) {
+  .main {
+    padding-bottom: 10rem !important;
+  }
+}
 @media only screen and (max-width: 767px) {
   .main {
     margin-top: 10rem;
