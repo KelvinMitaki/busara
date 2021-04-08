@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import { format } from "date-fns/esm";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { IoIosSend } from "react-icons/io";
-import { Page, Ans } from "../../interfaces/Data";
+import axios from "../../axiosConfig/axios";
+import qs from "qs";
+import { Page, Ans, Submit } from "../../interfaces/Data";
 import styles from "../../styles/survey.module.css";
 import Spinner from "../layout/Spinner";
 import MultiSelect from "../reduxForm/MultiSelect";
@@ -12,11 +15,21 @@ interface Props {
   pages: Page[];
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  survey_id: number;
 }
-
-const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
+let START_TIME: string;
+const Survey: React.FC<Props> = ({
+  pages,
+  currentPage,
+  setCurrentPage,
+  survey_id
+}) => {
+  useEffect(() => {
+    START_TIME = format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS xxxx");
+  }, []);
   const [answers, setAnswers] = useState<Ans[]>([]);
-  const onFormSubmit = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const onFormSubmit = async () => {
     const emptyAnswers = answers.some(a => !a.q_ans.trim().length);
     const questions = pages.map(p => p.sections.map(s => s.questions)).flat(2);
     const unAnsweredQuestions = questions.filter(q => {
@@ -26,7 +39,47 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
       return false;
     });
     if (!unAnsweredQuestions.length && !emptyAnswers) {
-      console.log(answers);
+      try {
+        setLoading(true);
+        console.log(
+          JSON.stringify([
+            {
+              ans: answers,
+              local_id: 0,
+              location: { accuracy: 0, lat: 0, lon: 0 },
+              survey_id,
+              start_time: START_TIME,
+              end_time: format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS xxxx")
+            }
+          ])
+        );
+        const { data } = await axios.post(
+          "/recruitment/answers/submit/",
+          {
+            data: qs.stringify([
+              {
+                ans: answers,
+                local_id: 0,
+                location: { accuracy: 0, lat: 0, lon: 0 },
+                survey_id,
+                start_time: START_TIME,
+                end_time: format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS xxxx")
+              } as Submit
+            ])
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/x-www-form-urlencoded"
+            }
+          }
+        );
+        setLoading(false);
+        console.log(data);
+      } catch (error) {
+        setLoading(false);
+        console.log(error.response.data);
+      }
     }
   };
   return (
@@ -103,11 +156,14 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
             {currentPage + 1 === pages.length ? (
               <div onClick={onFormSubmit}>
                 <p>submit</p>
-                {/* <IoIosSend size={25} /> */}
-                <span
-                  className="spinner-border"
-                  style={{ color: "var(--secondary-color)" }}
-                ></span>
+                {!loading ? (
+                  <IoIosSend size={25} />
+                ) : (
+                  <span
+                    className="spinner-border"
+                    style={{ color: "var(--secondary-color)" }}
+                  />
+                )}
               </div>
             ) : (
               <div onClick={() => setCurrentPage(c => c + 1)}>

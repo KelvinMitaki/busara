@@ -10,6 +10,7 @@ import Survey from "../components/survey/Survey";
 const survey = () => {
   const [pages, setPages] = useState<Page[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [surveyId, setSurveyId] = useState<number | null>(null);
   useEffect(() => {
     const getCurrUser = async () => {
       try {
@@ -19,7 +20,7 @@ const survey = () => {
           }
         });
         setPages(data.forms[0].pages);
-        console.log(data.forms[0].pages[1]);
+        setSurveyId(data.forms[0].id);
       } catch (error) {
         console.log(error.response);
       }
@@ -36,6 +37,7 @@ const survey = () => {
               pages={pages}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
+              survey_id={surveyId}
             />
           </div>
         </div>
