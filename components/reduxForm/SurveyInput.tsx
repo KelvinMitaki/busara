@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Ans } from "../../interfaces/Data";
 import styles from "../../styles/survey.module.css";
 
@@ -9,6 +9,7 @@ interface Props {
   setAnswers: React.Dispatch<React.SetStateAction<Ans[]>>;
   column_match: string;
   q_id: string;
+  answers: Ans[];
 }
 
 const SurveyInput: React.FC<Props> = ({
@@ -17,9 +18,16 @@ const SurveyInput: React.FC<Props> = ({
   required,
   setAnswers,
   column_match,
-  q_id
+  q_id,
+  answers
 }) => {
   const [input, setInput] = useState<string>("");
+  useEffect(() => {
+    const ans = answers.find(a => a.q_id === q_id);
+    if (ans) {
+      setInput(ans.q_ans);
+    }
+  }, []);
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
     setAnswers(a => {

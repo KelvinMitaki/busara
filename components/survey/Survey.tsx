@@ -51,6 +51,7 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
                           setAnswers={setAnswers}
                           column_match={q.column_match}
                           q_id={q.id.toString()}
+                          answers={answers}
                         />
                       );
                     }
