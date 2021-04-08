@@ -41,8 +41,9 @@ const Survey: React.FC<Props> = ({
     if (!unAnsweredQuestions.length && !emptyAnswers) {
       try {
         setLoading(true);
-        console.log(
-          JSON.stringify([
+        const { data } = await axios.post(
+          "/recruitment/answers/submit/",
+          [
             {
               ans: answers,
               local_id: 0,
@@ -50,27 +51,11 @@ const Survey: React.FC<Props> = ({
               survey_id,
               start_time: START_TIME,
               end_time: format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS xxxx")
-            }
-          ])
-        );
-        const { data } = await axios.post(
-          "/recruitment/answers/submit/",
-          {
-            data: qs.stringify([
-              {
-                ans: answers,
-                local_id: 0,
-                location: { accuracy: 0, lat: 0, lon: 0 },
-                survey_id,
-                start_time: START_TIME,
-                end_time: format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS xxxx")
-              } as Submit
-            ])
-          },
+            } as Submit
+          ],
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-              "Content-Type": "application/x-www-form-urlencoded"
+              Authorization: `Bearer ${localStorage.getItem("token")}`
             }
           }
         );
@@ -78,7 +63,9 @@ const Survey: React.FC<Props> = ({
         console.log(data);
       } catch (error) {
         setLoading(false);
-        console.log(error.response.data);
+        console.log(
+          JSON.stringify(error.response.data.errors[0].errors, null, 4)
+        );
       }
     }
   };

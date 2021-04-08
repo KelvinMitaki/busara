@@ -6,6 +6,7 @@ import withAuth from "../HOCs/withAuth";
 import { Page } from "../interfaces/Data";
 import styles from "../styles/survey.module.css";
 import Survey from "../components/survey/Survey";
+import Success from "../components/layout/Success";
 
 const survey = () => {
   const [pages, setPages] = useState<Page[]>([]);
@@ -40,6 +41,7 @@ const survey = () => {
               survey_id={surveyId}
             />
           </div>
+          <Success />
         </div>
       </div>
     </Layout>
