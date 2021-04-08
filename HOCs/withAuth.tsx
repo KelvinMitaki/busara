@@ -28,8 +28,8 @@ const withAuth = (WrappedComponent: React.FC) => {
               Authorization: `Bearer ${localStorage.getItem("token")}`
             }
           });
-          setLoading(false);
           dispatch<SetCurrentUser>({ type: "setCurrentUser", payload: data });
+          setLoading(false);
         } catch (error) {
           Router.replace("/authenticate");
         }
