@@ -90,3 +90,22 @@ export interface Survey {
   validation_rule: string;
   widget: "article-image" | "multiselect" | "text" | "tel" | "select";
 }
+
+interface Ans {
+  column_match: string;
+  q_ans: string;
+  q_id: string;
+}
+
+export interface Submit {
+  ans: Ans[];
+  end_time: string;
+  local_id: number;
+  location: {
+    accuracy: number;
+    lat: number;
+    lon: number;
+  };
+  start_time: string;
+  survey_id: number;
+}
