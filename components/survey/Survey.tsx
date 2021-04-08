@@ -16,8 +16,19 @@ interface Props {
 
 const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
   const [answers, setAnswers] = useState<Ans[]>([]);
-  const onFormSubmit = () => {};
-  console.log(answers);
+  const onFormSubmit = () => {
+    const emptyAnswers = answers.some(a => !a.q_ans.trim().length);
+    const questions = pages.map(p => p.sections.map(s => s.questions)).flat(2);
+    const unAnsweredQuestions = questions.filter(q => {
+      if (q.is_mandatory) {
+        return !answers.some(a => parseInt(a.q_id) === q.id);
+      }
+      return false;
+    });
+    if (!unAnsweredQuestions.length && !emptyAnswers) {
+      console.log(answers);
+    }
+  };
   return (
     <React.Fragment>
       <form onSubmit={e => e.preventDefault()}>

@@ -32,6 +32,20 @@ const MultiSelect: React.FC<Props> = ({
   const openRef = useRef<HTMLDivElement>();
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
+    setAnswers(a => {
+      const answers = [...a];
+      const ansExist = answers.findIndex(ans => ans.q_id === q_id);
+      if (ansExist !== -1) {
+        answers[ansExist] = {
+          column_match,
+          q_id,
+          q_ans: dropdown_options[0].name
+        };
+        return answers;
+      } else {
+        return [...a, { column_match, q_id, q_ans: dropdown_options[0].name }];
+      }
+    });
     return () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
