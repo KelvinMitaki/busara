@@ -1,4 +1,4 @@
-import { format } from "date-fns/esm";
+import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { IoIosSend } from "react-icons/io";
