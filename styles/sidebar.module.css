@@ -3,6 +3,7 @@
   min-height: 100vh;
   padding: 2rem;
   background-color: var(--primary-color-light);
+  z-index: 10;
 }
 
 .container div {
