@@ -17,6 +17,7 @@ interface Props {
 const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
   const [answers, setAnswers] = useState<Ans[]>([]);
   const onFormSubmit = () => {};
+  console.log(answers);
   return (
     <React.Fragment>
       <form onSubmit={e => e.preventDefault()}>

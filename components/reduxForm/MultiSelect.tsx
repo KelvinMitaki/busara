@@ -51,9 +51,37 @@ const MultiSelect: React.FC<Props> = ({
         }
         return [...o, optn];
       });
+      setAnswers(a => {
+        const answers = [...a];
+        const ansExist = answers.findIndex(ans => ans.q_id === q_id);
+        if (ansExist !== -1) {
+          answers[ansExist] = {
+            column_match,
+            q_id,
+            q_ans: `${answers[ansExist].q_ans}, ${optn.name}`
+          };
+          return answers;
+        } else {
+          return [...a, { column_match, q_id, q_ans: optn.name }];
+        }
+      });
     }
     if (select_type === "select") {
       setSingleOption(optn);
+      setAnswers(a => {
+        const answers = [...a];
+        const ansExist = answers.findIndex(ans => ans.q_id === q_id);
+        if (ansExist !== -1) {
+          answers[ansExist] = {
+            column_match,
+            q_id,
+            q_ans: optn.name
+          };
+          return answers;
+        } else {
+          return [...a, { column_match, q_id, q_ans: optn.name }];
+        }
+      });
     }
   };
   const setInputValue = (): string | string[] => {
