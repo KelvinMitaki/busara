@@ -16,7 +16,6 @@ const SurveyImage: React.FC<Props> = ({ image, text, required, image_alt }) => {
           __html: `<div>${text}</div> ${required ? `<span>*</span>` : ""}`
         }}
       />
-
       <img src={image} alt={image_alt} className={styles.img} />
     </div>
   );

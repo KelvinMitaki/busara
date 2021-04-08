@@ -91,7 +91,7 @@ export interface Survey {
   widget: "article-image" | "multiselect" | "text" | "tel" | "select";
 }
 
-interface Ans {
+export interface Ans {
   column_match: string;
   q_ans: string;
   q_id: string;

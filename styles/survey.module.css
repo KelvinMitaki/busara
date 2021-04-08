@@ -22,14 +22,15 @@
 .form_prt {
   width: 80%;
   min-height: 80vh;
+  margin: 0% auto;
+}
+.form_prt form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: 0% auto;
-}
-.form_prt form {
   width: 100%;
+  min-height: 80vh;
 }
 
 .form_prt label {

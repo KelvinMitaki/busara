@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { Survey } from "../../interfaces/Data";
+import { Ans, Survey } from "../../interfaces/Data";
 import styles from "../../styles/survey.module.css";
 
 interface Props {
@@ -8,13 +8,19 @@ interface Props {
   select_type: "select" | "multiselect";
   text: string;
   required: boolean;
+  setAnswers: React.Dispatch<React.SetStateAction<Ans[]>>;
+  column_match: string;
+  q_id: string;
 }
 
 const MultiSelect: React.FC<Props> = ({
   dropdown_options,
   select_type,
   text,
-  required
+  required,
+  setAnswers,
+  column_match,
+  q_id
 }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedOptions, setSelectedOptions] = useState<
