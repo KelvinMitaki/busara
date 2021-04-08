@@ -7,11 +7,14 @@ import { Page } from "../interfaces/Data";
 import styles from "../styles/survey.module.css";
 import Survey from "../components/survey/Survey";
 import Success from "../components/layout/Success";
+import { useSelector } from "react-redux";
+import { Redux } from "../interfaces/Redux";
 
 const survey = () => {
   const [pages, setPages] = useState<Page[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [surveyId, setSurveyId] = useState<number | null>(null);
+  const { surveySubmitted } = useSelector((state: Redux) => state.survey);
   useEffect(() => {
     const getCurrUser = async () => {
       try {
@@ -32,7 +35,11 @@ const survey = () => {
     <Layout title="Survey">
       <div className={styles.container}>
         <Sidebar active="survey" />
-        <div className={styles.main}>
+        <div
+          className={`${styles.main} ${
+            surveySubmitted ? styles.submitted : ""
+          }`}
+        >
           <div className={styles.form_prt}>
             <Survey
               pages={pages}
@@ -41,8 +48,8 @@ const survey = () => {
               survey_id={surveyId}
             />
           </div>
-          <Success />
         </div>
+        <Success />
       </div>
     </Layout>
   );

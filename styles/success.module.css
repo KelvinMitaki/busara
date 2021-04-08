@@ -5,9 +5,27 @@
   height: 100vh;
   width: calc(100vw - 30rem);
   background-color: var(--secondary-color);
+  color: var(--primary-color-light);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s;
+  transform: scale(0);
+  padding: 2rem;
+}
+.submitted.container {
+  transform: scale(1);
+}
+.container svg {
+  margin-bottom: 2rem;
+}
+
+.container p {
+  margin: 0%;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 767px) {

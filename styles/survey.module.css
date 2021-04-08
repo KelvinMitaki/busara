@@ -5,13 +5,18 @@
   color: var(--dull-white);
   height: 100vh;
   overflow-y: hidden;
+  position: relative;
 }
 
 .main {
   padding: 4rem;
   width: calc(100vw - 30rem);
   overflow-y: auto;
-  position: relative;
+  transition: all 0.2s;
+  transform: scale(1);
+}
+.submitted.main {
+  transform: scale(0);
 }
 .main h1 {
   text-transform: uppercase;

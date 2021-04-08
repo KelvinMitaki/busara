@@ -10,6 +10,8 @@ import Spinner from "../layout/Spinner";
 import MultiSelect from "../reduxForm/MultiSelect";
 import SurveyImage from "../reduxForm/SurveyImage";
 import SurveyInput from "../reduxForm/SurveyInput";
+import { useDispatch } from "react-redux";
+import { SetSurveySubmitted } from "../layout/Success";
 
 interface Props {
   pages: Page[];
@@ -29,6 +31,7 @@ const Survey: React.FC<Props> = ({
   }, []);
   const [answers, setAnswers] = useState<Ans[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const onFormSubmit = async () => {
     const emptyAnswers = answers.some(a => !a.q_ans.trim().length);
     const questions = pages.map(p => p.sections.map(s => s.questions)).flat(2);
@@ -59,9 +62,17 @@ const Survey: React.FC<Props> = ({
             }
           }
         );
+        dispatch<SetSurveySubmitted>({
+          type: "setSurveySubmitted",
+          payload: "success"
+        });
         setLoading(false);
         console.log(data);
       } catch (error) {
+        dispatch<SetSurveySubmitted>({
+          type: "setSurveySubmitted",
+          payload: "error"
+        });
         setLoading(false);
         console.log(
           JSON.stringify(error.response.data.errors[0].errors, null, 4)
