@@ -54,6 +54,7 @@ const Survey: React.FC<Props> = ({ pages, currentPage, setCurrentPage }) => {
                         text={q.text}
                         key={q.id}
                         required={q.is_mandatory}
+                        image_alt={q.uploads[0].file_description}
                       />
                     );
                   }
