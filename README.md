@@ -42,7 +42,11 @@
 
 ## About The Project
 
-[![busara screenshot][busara screenshot]](<https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(86).png>)
+<!--
+[![busara screenshot][busara screenshot]](<https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(86).png>) -->
+ <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(86).png">
+    <img src="images/1.png" alt="PROJECT_IMAGE">
+  </a>
 
 ### Built With
 
@@ -60,7 +64,7 @@ npm run dev
 
 ### Prerequisites
 
-The project was built with JavaScript language so you need Node installed then inorder to install all dependencies, you need to run command
+The project was built with JavaScript language so you need Node installed then to install all dependencies, you need to run command
 
 - npm
   ```sh
@@ -79,14 +83,17 @@ The project was built with JavaScript language so you need Node installed then i
    ```
 4. Enter your API keys in `config/keys.env`
    ```env
-   API_KEY=ENTER YOUR API
+   API_KEY=ENTER YOUR API KEY
    ```
 
 ## Usage
 
 Once you have your API keys setup, run the site in the browser. Register and Login to the site. The site is all about collection on survey data. Fill in all the required fields in the form then submit it. You can also view your profile with the registered information as shown in the image below.
 
-[![profile page screenshot][profile page screenshot]](<https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(92).png>)
+<!-- [![profile page screenshot][profile page screenshot]](<https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(92).png>) -->
+ <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(92).png">
+    <img src="images/2.png" alt="PROJECT_IMAGE">
+  </a>
 
 ## Contributing
 
