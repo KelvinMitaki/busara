@@ -43,6 +43,16 @@ const Survey: React.FC<Props> = ({
     });
     if (!unAnsweredQuestions.length && !emptyAnswers) {
       try {
+        console.log([
+          {
+            ans: answers,
+            local_id: 0,
+            location: { accuracy: 0, lat: 0, lon: 0 },
+            survey_id,
+            start_time: START_TIME,
+            end_time: format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS xxxx")
+          } as Submit
+        ]);
         setLoading(true);
         const { data } = await axios.post(
           "/recruitment/answers/submit/",
