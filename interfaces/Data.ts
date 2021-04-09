@@ -93,8 +93,8 @@ export interface Survey {
 
 export interface Ans {
   column_match: string;
-  q_ans: string;
-  q_id: string;
+  q_ans: string | number;
+  q_id: number;
 }
 
 export interface Submit {

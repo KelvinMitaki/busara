@@ -41,12 +41,14 @@ const survey = () => {
           }`}
         >
           <div className={styles.form_prt}>
-            <Survey
-              pages={pages}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              survey_id={surveyId}
-            />
+            {pages.length ? (
+              <Survey
+                pages={pages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                survey_id={surveyId}
+              />
+            ) : null}
           </div>
         </div>
         <Success />

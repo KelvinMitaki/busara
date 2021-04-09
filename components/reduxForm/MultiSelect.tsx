@@ -34,16 +34,23 @@ const MultiSelect: React.FC<Props> = ({
     window.addEventListener("mousedown", handleClickOutside);
     setAnswers(a => {
       const answers = [...a];
-      const ansExist = answers.findIndex(ans => ans.q_id === q_id);
+      const ansExist = answers.findIndex(ans => ans.q_id.toString() === q_id);
       if (ansExist !== -1) {
         answers[ansExist] = {
           column_match,
-          q_id,
+          q_id: parseInt(q_id),
           q_ans: dropdown_options[0].name
         };
         return answers;
       } else {
-        return [...a, { column_match, q_id, q_ans: dropdown_options[0].name }];
+        return [
+          ...a,
+          {
+            column_match,
+            q_id: parseInt(q_id),
+            q_ans: dropdown_options[0].name
+          }
+        ];
       }
     });
     return () => {
@@ -67,16 +74,19 @@ const MultiSelect: React.FC<Props> = ({
       });
       setAnswers(a => {
         const answers = [...a];
-        const ansExist = answers.findIndex(ans => ans.q_id === q_id);
+        const ansExist = answers.findIndex(ans => ans.q_id.toString() === q_id);
         if (ansExist !== -1) {
           answers[ansExist] = {
             column_match,
-            q_id,
+            q_id: parseInt(q_id),
             q_ans: `${answers[ansExist].q_ans}, ${optn.name}`
           };
           return answers;
         } else {
-          return [...a, { column_match, q_id, q_ans: optn.name }];
+          return [
+            ...a,
+            { column_match, q_id: parseInt(q_id), q_ans: optn.name }
+          ];
         }
       });
     }
@@ -84,16 +94,19 @@ const MultiSelect: React.FC<Props> = ({
       setSingleOption(optn);
       setAnswers(a => {
         const answers = [...a];
-        const ansExist = answers.findIndex(ans => ans.q_id === q_id);
+        const ansExist = answers.findIndex(ans => ans.q_id.toString() === q_id);
         if (ansExist !== -1) {
           answers[ansExist] = {
             column_match,
-            q_id,
+            q_id: parseInt(q_id),
             q_ans: optn.name
           };
           return answers;
         } else {
-          return [...a, { column_match, q_id, q_ans: optn.name }];
+          return [
+            ...a,
+            { column_match, q_id: parseInt(q_id), q_ans: optn.name }
+          ];
         }
       });
     }

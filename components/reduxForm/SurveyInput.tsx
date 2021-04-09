@@ -23,21 +23,32 @@ const SurveyInput: React.FC<Props> = ({
 }) => {
   const [input, setInput] = useState<string>("");
   useEffect(() => {
-    const ans = answers.find(a => a.q_id === q_id);
+    const ans = answers.find(a => a.q_id.toString() === q_id);
     if (ans) {
-      setInput(ans.q_ans);
+      setInput(ans.q_ans.toString());
     }
   }, []);
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
     setAnswers(a => {
       const answers = [...a];
-      const ansExist = answers.findIndex(ans => ans.q_id === q_id);
+      const ansExist = answers.findIndex(ans => ans.q_id.toString() === q_id);
       if (ansExist !== -1) {
-        answers[ansExist] = { column_match, q_id, q_ans: e.target.value };
+        answers[ansExist] = {
+          column_match,
+          q_id: parseInt(q_id),
+          q_ans: type === "number" ? parseInt(e.target.value) : e.target.value
+        };
         return answers;
       } else {
-        return [...a, { column_match, q_id, q_ans: e.target.value }];
+        return [
+          ...a,
+          {
+            column_match,
+            q_id: parseInt(q_id),
+            q_ans: type === "number" ? parseInt(e.target.value) : e.target.value
+          }
+        ];
       }
     });
   };

@@ -33,11 +33,11 @@ const Survey: React.FC<Props> = ({
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
   const onFormSubmit = async () => {
-    const emptyAnswers = answers.some(a => !a.q_ans.trim().length);
+    const emptyAnswers = answers.some(a => !a.q_ans.toString().trim().length);
     const questions = pages.map(p => p.sections.map(s => s.questions)).flat(2);
     const unAnsweredQuestions = questions.filter(q => {
       if (q.is_mandatory) {
-        return !answers.some(a => parseInt(a.q_id) === q.id);
+        return !answers.some(a => a.q_id === q.id);
       }
       return false;
     });
@@ -58,7 +58,7 @@ const Survey: React.FC<Props> = ({
           "/recruitment/answers/submit/",
           [
             {
-              ans: answers,
+              ans: answers.filter(ans => ans.column_match === "full_name"),
               local_id: 0,
               location: { accuracy: 0, lat: 0, lon: 0 },
               survey_id,
