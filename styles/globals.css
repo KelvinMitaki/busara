@@ -49,7 +49,7 @@ a {
 .custom_modal {
   width: 70%;
   min-height: 60vh;
-  box-shadow: 0 0 4rem var(--primary-color-light);
+  box-shadow: 0 0 2rem var(--primary-color-light);
   border-radius: 2rem;
   overflow: hidden;
 }
