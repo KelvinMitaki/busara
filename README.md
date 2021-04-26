@@ -154,6 +154,12 @@ Incase of an error on form submission, the user is notified to reload the browse
 <img src="images/6.png" alt="PROJECT_IMAGE">
 </a>
 
+If the survey data has already been submitted and no other survey has been provided yet from the server. The user will get a message stating that `No survey data currently available. Please try again later.`
+<br/>
+<a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(109).png">
+<img src="images/6.png" alt="PROJECT_IMAGE">
+</a>
+
 <!-- [![profile page screenshot][profile page screenshot]](<https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(92).png>) -->
 
 ## Contributing
