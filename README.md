@@ -44,9 +44,6 @@
 
 <!--
 [![busara screenshot][busara screenshot]](<https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(86).png>) -->
- <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(99).png">
-    <img src="images/1.png" alt="PROJECT_IMAGE">
-  </a>
 
 ### Built With
 
@@ -90,8 +87,6 @@ The project was built with JavaScript language so you need Node installed then t
 
 Once you have your API keys setup, run the project in the browser.
 
-<!-- Register and Login to the site. The site is all about collection on survey data. Fill in all the required fields in the form then submit it. You can also view your profile with the registered information as shown in the image below. -->
-
 There are three main pages:
 
 - [Authenticate Page](https://busara.vercel.app/authenticate)
@@ -108,6 +103,7 @@ In order for a user to register, he/she must provide all the credentials needed,
 - phone number
 
 Validation is done on the frontend before the form is submitted to the backend. The email must be a valid email address. Password and confirm password must match and not be less than six characters. The phone number must be a valid kenyan phone number starting with `2547`. If a phone number is already in use, an error will be generated from the backend which is shown nicely to the user on the frontend.
+
 <br/>
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(102).png">
 <img src="images/3.png" alt="PROJECT_IMAGE">
@@ -120,19 +116,45 @@ In order for a user to login, he/she must provide all the credentials needed, th
 - email
 - password
 
-The email is validated to be a valid email before form submission. Password validation is also done to ensure password is more than six characters. Incase of an invalid email or password, the user is notified on the frontend with an error message stating that `invalid email or password`. The message is generic to ensire that a malicious user doesn't try to guess a user email and password.
+The email is validated to be a valid email before form submission. Password validation is also done to ensure password is more than six characters. Incase of an invalid email or password, the user is notified on the frontend with an error message stating that `invalid email or password`. The message is generic to ensire that a malicious user doesn't try to guess a user's email and password.
 
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(103).png">
 <img src="images/4.png" alt="PROJECT_IMAGE">
 </a>
 
 - [Profile Page](https://busara.vercel.app/profile)
+
+**Profile**
+<br/>
+
+After a user has logged in successfully, he/she is redirected to the profile page where they can view their user data. A user can also log out of the site where the auth token is cleared and the user is redirected to authenticate page.
+
+<a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(97).png">
+<img src="images/2.png" alt="PROJECT_IMAGE">
+</a>
+
 - [Survey Page](https://busara.vercel.app)
 
+**Survey**
+<br/>
+
+This is the main page which entails the survey. The surevey is fetched dynamically from the server and rendered for the currently logged in user to answer the question. After filling out the questions in the survey, a user can then submit the form. Pagination is also included depending on the number of questions fetched from the server.
+
+<a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(99).png">
+<img src="images/1.png" alt="PROJECT_IMAGE">
+</a>
+<br/>
+After a successful form submission, the user is notified that the form was successfully submitted.
+<a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(105).png">
+<img src="images/5.png" alt="PROJECT_IMAGE">
+</a>
+<br/>
+Incase of an error on form submission, the user is notified to reload the browser and try again or after some time. In this case, we assume that the user is having network issues from his/her side or there's an internal server error.
+<a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(106).png">
+<img src="images/6.png" alt="PROJECT_IMAGE">
+</a>
+
 <!-- [![profile page screenshot][profile page screenshot]](<https://e-commerce-gig.s3.eu-west-2.amazonaws.com/Screenshot+(92).png>) -->
- <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(97).png">
-    <img src="images/2.png" alt="PROJECT_IMAGE">
-  </a>
 
 ## Contributing
 
