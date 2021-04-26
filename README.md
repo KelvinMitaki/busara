@@ -61,7 +61,7 @@ npm run dev
 
 ### Prerequisites
 
-The project was built with JavaScript language so you need Node installed then to install all dependencies, you need to run command
+The project was built with JavaScript language so you need Node.Js installed then to install all dependencies, run command
 
 - npm
   ```sh
@@ -90,6 +90,7 @@ Once you have your API keys setup, run the project in the browser.
 There are three main pages:
 
 - [Authenticate Page](https://busara.vercel.app/authenticate)
+  <br/>
   The authenticate page has both login and register components which are determined by the current state of the site. The default state shows the login component. If the user presses `take me to register`, the register component replaces the login component. A smooth animation is shown with CSS transitions and keyframes.
 
 **Register**
@@ -103,6 +104,7 @@ In order for a user to register, he/she must provide all the credentials needed,
 - phone number
 
 Validation is done on the frontend before the form is submitted to the backend. The email must be a valid email address. Password and confirm password must match and not be less than six characters. The phone number must be a valid kenyan phone number starting with `2547`. If a phone number is already in use, an error will be generated from the backend which is shown nicely to the user on the frontend.
+The reason for frontend validation is to avoid how many times the server is hit by requests, so by validating data on the frontend, we'll only have one request to the backend to save user's data after it has been validated.
 
 <br/>
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(102).png">
@@ -116,7 +118,7 @@ In order for a user to login, he/she must provide all the credentials needed, th
 - email
 - password
 
-The email is validated to be a valid email before form submission. Password validation is also done to ensure password is more than six characters. Incase of an invalid email or password, the user is notified on the frontend with an error message stating that `invalid email or password`. The message is generic to ensire that a malicious user doesn't try to guess a user's email and password.
+The email is checked if it's valid email before form submission. Password validation is also done to ensure password is more than six characters. Incase of an invalid email or password, the user is notified on the frontend with an error message stating that `invalid email or password`. The message is generic to ensire that a malicious user doesn't try to guess a user's email and password.
 
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(103).png">
 <img src="images/4.png" alt="PROJECT_IMAGE">
@@ -136,7 +138,7 @@ After a user has logged in successfully, he/she is redirected to the profile pag
 
 <br/>
 
-This is the main page which entails the survey. The surevey is fetched dynamically from the server and rendered for the currently logged in user to answer the question. After filling out the questions in the survey, a user can then submit the form. Pagination is also included depending on the number of questions fetched from the server.
+This is the main page which entails the survey. The surevey is fetched dynamically from the server and rendered for the currently logged in user to answer the questions. After filling out the questions in the survey, a user can then submit the form. Pagination is also included depending on the number of questions fetched from the server.
 
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(99).png">
 <img src="images/1.png" alt="PROJECT_IMAGE">
@@ -152,7 +154,7 @@ Incase of an error on form submission, the user is notified to reload the browse
 <img src="images/6.png" alt="PROJECT_IMAGE">
 </a>
 
-If the survey data has already been submitted and no other survey has been provided yet from the server. The user will get a message stating that `No survey data currently available. Please try again later.`
+If the survey data has already been submitted and no other survey has been provided yet from the server, the user will get a message stating that `No survey data currently available. Please try again later.`
 <br/>
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(109).png">
 <img src="images/7.png" alt="PROJECT_IMAGE">
