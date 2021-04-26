@@ -13,6 +13,7 @@
   transition: all 0.2s;
   transform: scale(0);
   padding: 2rem;
+  text-align: center;
 }
 .submitted.container {
   transform: scale(1);
