@@ -98,6 +98,15 @@ There are three main pages:
   The authenticate page has both login and register components which are determined by the current state of the site. The default state shows the login component. If the user presses `take me to register`, the register component replaces the login component. A smooth animation is shown with CSS transitions and keyframes.
 
 **Register**
+In order for a user to register, he/she must provide all the credentials needed, That is:
+
+- full name
+- email
+- password
+- confirm password
+- phone number
+
+Validation is done on the frontend before the form is submitted to the backend. The email must be a valid email address. Password and confirm password must match and not be less than six characters. The phone number must be a valid kenyan phone number starting with `2547`
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(102).png">
 <img src="images/3.png" alt="PROJECT_IMAGE">
 </a>
