@@ -95,6 +95,18 @@ Once you have your API keys setup, run the project in the browser.
 There are three main pages:
 
 - [Authenticate Page](https://busara.vercel.app/authenticate)
+  The authenticate page has both login and register components which are determined by the current state of the site. The default state shows the login component. If the user presses `take me to register`, the register component replaces the login component. A smooth animation is shown with CSS transitions and keyframes.
+
+**Register**
+<a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(102).png">
+<img src="images/3.png" alt="PROJECT_IMAGE">
+</a>
+
+**Login**
+<a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(103).png">
+<img src="images/4.png" alt="PROJECT_IMAGE">
+</a>
+
 - [Profile Page](https://busara.vercel.app/profile)
 - [Survey Page](https://busara.vercel.app)
 
