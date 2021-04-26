@@ -56,12 +56,8 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
             Router.replace("/profile");
           } catch (error) {
             console.log(error.response);
-            if (
-              error.response &&
-              error.response.data &&
-              error.response.data.Error
-            ) {
-              setErr(error.response.data.Error);
+            if (error.response && error.response.data && error.response.data.error) {
+              setErr(error.response.data.error);
             }
             setLoading(false);
           }
@@ -81,20 +77,13 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
               <RiLockFill size={20} />
             </div>
             <span></span>
-            <Field
-              component={Input}
-              placeholder="Password"
-              name="password"
-              type="password"
-            />
+            <Field component={Input} placeholder="Password" name="password" type="password" />
           </div>
           <button>
             continue
-            {loading && (
-              <span className="spinner-border" style={{ marginLeft: "1rem" }} />
-            )}
+            {loading && <span className="spinner-border" style={{ marginLeft: "1rem" }} />}
           </button>
-          {err && <div className={styles.server_error}>{err}</div>}
+          {err && <div className={styles.server_error}>Invalid email or password</div>}
           <div className={styles.sm}>
             <p>don't have an account?</p>
             <div
@@ -128,16 +117,10 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
 };
 const validate = (formValues: FormValues) => {
   const errors = {} as FormValues;
-  if (
-    !formValues.username ||
-    (formValues.username && !validator.isEmail(formValues.username))
-  ) {
+  if (!formValues.username || (formValues.username && !validator.isEmail(formValues.username))) {
     errors.username = "Enter a valid email";
   }
-  if (
-    !formValues.password ||
-    (formValues.password && formValues.password.trim().length < 6)
-  ) {
+  if (!formValues.password || (formValues.password && formValues.password.trim().length < 6)) {
     errors.password = "Password must be six characters minimum";
   }
   return errors;
