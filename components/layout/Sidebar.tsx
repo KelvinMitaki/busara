@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { FcSurvey } from "react-icons/fc";
+import { BiLogOut } from "react-icons/bi";
 import styles from "../../styles/sidebar.module.css";
 
 interface Props {
@@ -9,6 +10,10 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ active }) => {
+  const logout = () => {
+    localStorage.removeItem("token");
+    location.replace("/authenticate");
+  };
   return (
     <div className={styles.container}>
       <Link href="/profile">
@@ -27,6 +32,10 @@ const Sidebar: React.FC<Props> = ({ active }) => {
           </p>
         </div>
       </Link>
+      <div className={active == "survey" ? styles.active : ""} onClick={logout}>
+        <BiLogOut size={25} />
+        <p>Logout</p>
+      </div>
     </div>
   );
 };
