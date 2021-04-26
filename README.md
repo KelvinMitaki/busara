@@ -89,7 +89,7 @@ Once you have your API keys setup, run the project in the browser.
 
 There are three main pages:
 
-- [Authenticate Page](https://busara.vercel.app/authenticate)
+- [Authentication Page](https://busara.vercel.app/authenticate)
   <br/>
   The authenticate page has both login and register components which are determined by the current state of the site. The default state shows the login component. If the user presses `take me to register`, the register component replaces the login component. A smooth animation is shown with CSS transitions and keyframes.
 
