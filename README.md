@@ -124,7 +124,6 @@ The email is validated to be a valid email before form submission. Password vali
 
 - [Profile Page](https://busara.vercel.app/profile)
 
-**Profile**
 <br/>
 
 After a user has logged in successfully, he/she is redirected to the profile page where they can view their user data. A user can also log out of the site where the auth token is cleared and the user is redirected to authenticate page.
@@ -135,7 +134,6 @@ After a user has logged in successfully, he/she is redirected to the profile pag
 
 - [Survey Page](https://busara.vercel.app)
 
-**Survey**
 <br/>
 
 This is the main page which entails the survey. The surevey is fetched dynamically from the server and rendered for the currently logged in user to answer the question. After filling out the questions in the survey, a user can then submit the form. Pagination is also included depending on the number of questions fetched from the server.
