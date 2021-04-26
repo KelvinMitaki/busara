@@ -32,7 +32,7 @@ const Sidebar: React.FC<Props> = ({ active }) => {
           </p>
         </div>
       </Link>
-      <div className={active == "survey" ? styles.active : ""} onClick={logout}>
+      <div onClick={logout}>
         <BiLogOut size={25} />
         <p>Logout</p>
       </div>
