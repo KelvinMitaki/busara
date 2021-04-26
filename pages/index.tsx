@@ -9,9 +9,10 @@ import Survey from "../components/survey/Survey";
 import Success from "../components/layout/Success";
 import { useSelector } from "react-redux";
 import { Redux } from "../interfaces/Redux";
+import Spinner from "../components/layout/Spinner";
 
 const survey = () => {
-  const [pages, setPages] = useState<Page[]>([]);
+  const [pages, setPages] = useState<Page[]>(null);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [surveyId, setSurveyId] = useState<number | null>(null);
   const { surveySubmitted } = useSelector((state: Redux) => state.survey);
@@ -35,13 +36,9 @@ const survey = () => {
     <Layout title="Survey">
       <div className={styles.container}>
         <Sidebar active="survey" />
-        <div
-          className={`${styles.main} ${
-            surveySubmitted ? styles.submitted : ""
-          }`}
-        >
+        <div className={`${styles.main} ${surveySubmitted ? styles.submitted : ""}`}>
           <div className={styles.form_prt}>
-            {pages.length ? (
+            {pages && pages.length ? (
               <Survey
                 pages={pages}
                 currentPage={currentPage}
@@ -49,6 +46,7 @@ const survey = () => {
                 survey_id={surveyId}
               />
             ) : null}
+            {!Array.isArray(pages) && <Spinner context="auth" />}
           </div>
         </div>
         <Success />
