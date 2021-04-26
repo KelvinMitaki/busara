@@ -107,13 +107,21 @@ In order for a user to register, he/she must provide all the credentials needed,
 - confirm password
 - phone number
 
-Validation is done on the frontend before the form is submitted to the backend. The email must be a valid email address. Password and confirm password must match and not be less than six characters. The phone number must be a valid kenyan phone number starting with `2547`
+Validation is done on the frontend before the form is submitted to the backend. The email must be a valid email address. Password and confirm password must match and not be less than six characters. The phone number must be a valid kenyan phone number starting with `2547`. If a phone number is already in use, an error will be generated from the backend which is shown nicely to the user on the frontend.
 <br/>
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(102).png">
 <img src="images/3.png" alt="PROJECT_IMAGE">
 </a>
 
 **Login**
+<br/>
+In order for a user to login, he/she must provide all the credentials needed, that is:
+
+- email
+- password
+
+The email is validated to be a valid email before form submission. Password validation is also done to ensure password is more than six characters. Incase of an invalid email or password, the user is notified on the frontend with an error message stating that `invalid email or password`. The message is generic to ensire that a malicious user doesn't try to guess a user email and password.
+
 <a href="https://e-commerce-gig.s3.eu-west-2.amazonaws.com/5efd9987b53dfa39cc27bae9/Screenshot+(103).png">
 <img src="images/4.png" alt="PROJECT_IMAGE">
 </a>
