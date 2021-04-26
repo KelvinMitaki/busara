@@ -24,8 +24,8 @@ const survey = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         });
-        setPages(data.forms[0].pages);
-        setSurveyId(data.forms[0].id);
+        setPages(data.forms.length ? data.forms[0].pages : []);
+        setSurveyId(data.forms.length ? data.forms[0].id : 0);
       } catch (error) {
         console.log(error.response);
       }
@@ -49,7 +49,7 @@ const survey = () => {
             {!Array.isArray(pages) && <Spinner context="auth" />}
           </div>
         </div>
-        <Success />
+        <Success pages={pages} />
       </div>
     </Layout>
   );
