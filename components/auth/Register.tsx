@@ -60,6 +60,14 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             if (error.response && error.response.data && error.response.data.email) {
               setErr(error.response.data.email[0]);
             }
+            if (
+              error.response &&
+              error.response.data &&
+              !error.response.data.email &&
+              error.response.data.username
+            ) {
+              setErr(error.response.data.username[0]);
+            }
             setLoading(false);
           }
         })}

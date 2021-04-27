@@ -35,6 +35,7 @@ a {
   outline: none;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
+  /* color: ; */
 }
 
 :root {
