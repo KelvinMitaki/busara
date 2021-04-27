@@ -23,12 +23,8 @@ const MultiSelect: React.FC<Props> = ({
   q_id
 }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [selectedOptions, setSelectedOptions] = useState<
-    typeof dropdown_options
-  >([]);
-  const [singleOption, setSingleOption] = useState<typeof dropdown_options[0]>(
-    dropdown_options[0]
-  );
+  const [selectedOptions, setSelectedOptions] = useState<typeof dropdown_options>([]);
+  const [singleOption, setSingleOption] = useState<typeof dropdown_options[0]>(dropdown_options[0]);
   const openRef = useRef<HTMLDivElement>();
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
@@ -83,10 +79,7 @@ const MultiSelect: React.FC<Props> = ({
           };
           return answers;
         } else {
-          return [
-            ...a,
-            { column_match, q_id: parseInt(q_id), q_ans: optn.name }
-          ];
+          return [...a, { column_match, q_id: parseInt(q_id), q_ans: optn.name }];
         }
       });
     }
@@ -103,10 +96,7 @@ const MultiSelect: React.FC<Props> = ({
           };
           return answers;
         } else {
-          return [
-            ...a,
-            { column_match, q_id: parseInt(q_id), q_ans: optn.name }
-          ];
+          return [...a, { column_match, q_id: parseInt(q_id), q_ans: optn.name }];
         }
       });
     }
@@ -141,28 +131,14 @@ const MultiSelect: React.FC<Props> = ({
           __html: `<div>${text}</div> ${required ? `<span>*</span>` : ""}`
         }}
       />
-      <div
-        onClick={() => setOpen(true)}
-        ref={openRef}
-        className={styles.select_core}
-      >
+      <div onClick={() => setOpen(true)} ref={openRef} className={styles.select_core}>
         <input type="text" id="select" value={setInputValue()} disabled />
-        <div
-          className={`${styles.FiChevronDown} ${
-            open ? styles.FiChevronDown__open : ""
-          }`}
-        >
+        <div className={`${styles.FiChevronDown} ${open ? styles.FiChevronDown__open : ""}`}>
           <FiChevronDown size={20} />
         </div>
-        <div
-          className={`${styles.dropdown} ${open ? styles.dropdown__show : ""}`}
-        >
+        <div className={`${styles.dropdown} ${open ? styles.dropdown__show : ""}`}>
           {dropdown_options.map(o => (
-            <div
-              key={o.id}
-              onClick={() => handleSelect(o)}
-              className={setSelectedClassName(o)}
-            >
+            <div key={o.id} onClick={() => handleSelect(o)} className={setSelectedClassName(o)}>
               <p>{o.name}</p>
             </div>
           ))}

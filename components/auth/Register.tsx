@@ -52,12 +52,9 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
             await axios.post("/users/registration/", modifiedFormValues);
             setLoading(false);
             dispatch(reset("Register"));
+            dispatch<ToggleAuthenticate>({ type: "ToggleAuth", payload: "login" });
           } catch (error) {
-            if (
-              error.response &&
-              error.response.data &&
-              error.response.data.Error
-            ) {
+            if (error.response && error.response.data && error.response.data.Error) {
               setErr(error.response.data.Error);
             }
             setLoading(false);
@@ -85,12 +82,7 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
               <RiLockFill size={20} />
             </div>
             <span></span>
-            <Field
-              component={Input}
-              placeholder="Password"
-              name="password1"
-              type="password"
-            />
+            <Field component={Input} placeholder="Password" name="password1" type="password" />
           </div>
           <div className={styles.input}>
             <div className={styles.icon}>
@@ -109,17 +101,11 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
               <MdPhoneAndroid size={20} />
             </div>
             <span></span>
-            <Field
-              component={Input}
-              placeholder="Phone Number"
-              name="phone_number"
-            />
+            <Field component={Input} placeholder="Phone Number" name="phone_number" />
           </div>
           <button>
             create account
-            {loading && (
-              <span className="spinner-border" style={{ marginLeft: "1rem" }} />
-            )}
+            {loading && <span className="spinner-border" style={{ marginLeft: "1rem" }} />}
           </button>
           {err && <div className={styles.server_error}>{err}</div>}
           <div className={styles.sm}>
@@ -156,22 +142,13 @@ const Register: React.FC<InjectedFormProps<FormValues>> = props => {
 
 const validate = (formValues: FormValues) => {
   const errors = {} as FormValues;
-  if (
-    !formValues.full_name ||
-    (formValues.full_name && !formValues.full_name.trim().length)
-  ) {
+  if (!formValues.full_name || (formValues.full_name && !formValues.full_name.trim().length)) {
     errors.full_name = "Enter a valid full name";
   }
-  if (
-    !formValues.email ||
-    (formValues.email && !validator.isEmail(formValues.email))
-  ) {
+  if (!formValues.email || (formValues.email && !validator.isEmail(formValues.email))) {
     errors.email = "Enter a valid email";
   }
-  if (
-    !formValues.password1 ||
-    (formValues.password1 && formValues.password1.trim().length < 6)
-  ) {
+  if (!formValues.password1 || (formValues.password1 && formValues.password1.trim().length < 6)) {
     errors.password1 = "Password must be six characters minimum";
   }
   if (formValues.password1 !== formValues.password2) {
@@ -179,11 +156,9 @@ const validate = (formValues: FormValues) => {
   }
   if (
     !formValues.phone_number ||
-    (formValues.phone_number &&
-      !validator.isNumeric(formValues.phone_number)) ||
+    (formValues.phone_number && !validator.isNumeric(formValues.phone_number)) ||
     (formValues.phone_number && formValues.phone_number.trim().length !== 12) ||
-    (formValues.phone_number &&
-      formValues.phone_number.trim().slice(0, 4) !== "2547")
+    (formValues.phone_number && formValues.phone_number.trim().slice(0, 4) !== "2547")
   ) {
     errors.phone_number = "Enter a valid phone number starting with 2547";
   }
