@@ -83,7 +83,13 @@ const Login: React.FC<InjectedFormProps<FormValues>> = props => {
             continue
             {loading && <span className="spinner-border" style={{ marginLeft: "1rem" }} />}
           </button>
-          {err && <div className={styles.server_error}>Invalid email or password</div>}
+          {err && (
+            <div className={styles.server_error}>
+              {err === "invalid_client"
+                ? "System down, please try again after sometime"
+                : "Invalid email or password"}{" "}
+            </div>
+          )}
           <div className={styles.sm}>
             <p>don't have an account?</p>
             <div
